@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Persistence ###
+/src/main/java/META-INF/
