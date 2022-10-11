@@ -31,8 +31,16 @@ public class SalmosController {
     }
 
     @RequestMapping(path = "/salvarUsuario", method = RequestMethod.POST)
-    public Usuario test(@RequestBody String usuario) {
+    public Usuario salvarUsuario(@RequestBody String usuario) {
         Usuario user = (Usuario) gson.fromJson(usuario, Usuario.class);
         return FacadeInstance.getInstance().saveUsuario(user);
+    }
+
+    @RequestMapping(path = "/deletarUsuario", method = RequestMethod.GET)
+    public boolean deletarUsuario(Long id) {
+        Usuario user = new Usuario();
+        user.setId(id);
+        FacadeInstance.getInstance().deleteUsuario(user);
+        return true;
     }
 }
