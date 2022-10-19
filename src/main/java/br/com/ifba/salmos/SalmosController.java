@@ -26,6 +26,16 @@ public class SalmosController {
         return "Hello " + name + "!";
     }
 
+    @RequestMapping(path = "/login")
+    public Usuario login(String login, String senha) {
+        for (Usuario usr : FacadeInstance.getInstance().getAllUsuarios()) {
+            if (login.equals(usr.getLogin()) && senha.equals(usr.getSenha())) {
+                return usr;
+            }
+        }
+        return null;
+    }
+
     @RequestMapping(path = "/usuarios")
     public List<Usuario> getUsuarios() {
         return FacadeInstance.getInstance().getAllUsuarios();
