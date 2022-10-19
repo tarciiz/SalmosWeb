@@ -33,4 +33,5 @@ build/
 .vscode/
 
 ### Persistence ###
-/src/main/java/META-INF/
+src/main/java/META-INF/
+src/main/java/META-INF/persistence.xml
