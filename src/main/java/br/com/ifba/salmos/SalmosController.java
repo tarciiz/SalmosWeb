@@ -3,6 +3,7 @@ package br.com.ifba.salmos;
 import java.util.List;
 
 import br.com.ifba.salmos.infrastructure.service.FacadeInstance;
+import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
 
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,11 @@ public class SalmosController {
     @RequestMapping(path = "/usuarios")
     public List<Usuario> getUsuarios() {
         return FacadeInstance.getInstance().getAllUsuarios();
+    }
+
+    @RequestMapping(path = "/tipodeusuarios")
+    public List<TipoDeUsuario> getTipoDeUsuarios() {
+        return FacadeInstance.getInstance().getAllTipoDeUsuarios();
     }
 
     @RequestMapping(path = "/salvarUsuario", method = RequestMethod.POST)
