@@ -59,4 +59,11 @@ public class SalmosController {
         FacadeInstance.getInstance().deleteUsuario(user);
         return true;
     }
+
+    @RequestMapping(path = "/salvarTipoDeUsuario", method = RequestMethod.POST)
+    public TipoDeUsuario salvarTipoDeUsuario(@RequestBody String tipodeusuario){
+        TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario,  TipoDeUsuario.class);
+        return FacadeInstance.getInstance().saveTipoDeUsuario(tusuario);
+    }
+    
 }
