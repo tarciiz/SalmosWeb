@@ -76,7 +76,14 @@ public class SalmosController {
         TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario,  TipoDeUsuario.class);
         return serviceTipoUsuario.saveTipoDeUsuario(tusuario);
     }
-
+    
+    @RequestMapping(path = "/deletarTipoDeUsuario", method = RequestMethod.GET)//Criando o link para usar no frontend
+    public boolean deletarTipoDeUsuario(Long id) {//Criando fução de excluir
+        TipoDeUsuario tusuario = new TipoDeUsuario();//criando um objeto instanciado do tipo de objeto
+        tusuario.setId(id);//pegando o id passado por parâmetro e passando para o objeto
+        serviceTipoUsuario.deleteTipoDeUsuario(tusuario);//Chamando a função de deletar Tipo de usuário do service e passando o objeto com o id do objeto que quero excluir. 
+        return true;
+    }
 
 
 }
