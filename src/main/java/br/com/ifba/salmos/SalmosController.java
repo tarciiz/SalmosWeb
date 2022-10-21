@@ -64,20 +64,17 @@ public class SalmosController {
         return true;
     }
 
+    // ---------------------------------------------------
+    // ------------- TIPO USUARIO -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceTipoDeUsuario serviceTipoUsuario;
+
     @RequestMapping(path = "/salvarTipoDeUsuario", method = RequestMethod.POST)
     public TipoDeUsuario salvarTipoDeUsuario(@RequestBody String tipodeusuario){
         TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario,  TipoDeUsuario.class);
-        return FacadeInstance.getInstance().saveTipoDeUsuario(tusuario);
-    }
-    
-
-    // ---------------------------------------------------
-    // ------------- USUARIO -----------------------------
-    // ---------------------------------------------------
-
-    @RequestMapping(path = "/tipodeusuarios")
-    public List<TipoDeUsuario> getTipoDeUsuarios() {
-        return null;
+        return serviceTipoUsuario.saveTipoDeUsuario(tusuario);
     }
 
 
