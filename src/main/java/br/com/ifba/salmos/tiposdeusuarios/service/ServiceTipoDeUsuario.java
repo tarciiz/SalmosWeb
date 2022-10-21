@@ -6,6 +6,8 @@ package br.com.ifba.salmos.tiposdeusuarios.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 import br.com.ifba.salmos.tiposdeusuarios.dao.IDaoTipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
@@ -14,6 +16,7 @@ import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
  *
  * @author Igor Lopes e Eduarda
  */
+@Service
 public class ServiceTipoDeUsuario implements IServiceTipoDeUsuario{
     
     //CONSTANTES
