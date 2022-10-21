@@ -4,11 +4,11 @@
  */
 package br.com.ifba.salmos.setor.service;
 
+import java.util.List;
+
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import br.com.ifba.salmos.setor.dao.DaoSetor;
 import br.com.ifba.salmos.setor.dao.IDaoSetor;
 import br.com.ifba.salmos.setor.model.Setor;
-import java.util.List;
 
 /**
  *
@@ -30,9 +30,8 @@ public class ServiceSetor implements IServiceSetor{
     //mensagem de erro se o setor for inválido;
     public final static String SETOR_INVALIDO = "Setor inválido";
     
-    //Objeto
-    
-    private final IDaoSetor daoSetor = new DaoSetor(); 
+    //Objeto    
+    private IDaoSetor daoSetor; 
 
     @Override
     public Setor saveSetor(Setor setor) {
@@ -53,7 +52,7 @@ public class ServiceSetor implements IServiceSetor{
         } else if(daoSetor.findById(setor.getId()) == null) {
             throw new BusinessException(SETOR_NAO_EXISTE);
         } else {
-            return daoSetor.update(setor);
+            return daoSetor.save(setor);
         }
     }
 

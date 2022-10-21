@@ -4,14 +4,16 @@
  */
 package br.com.ifba.salmos.item.dao;
 
-import br.com.ifba.salmos.infrastructure.dao.IBaseDAO;
 import br.com.ifba.salmos.item.model.Item;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author vitor
  */
-public interface IDaoItem extends IBaseDAO<Item>{
+public interface IDaoItem extends JpaRepository<Item, Long>{
+
     public abstract List<Item> findByName(String name);
 }

@@ -4,11 +4,11 @@
  */
 package br.com.ifba.salmos.item.service;
 
+import java.util.List;
+
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import br.com.ifba.salmos.item.dao.DaoItem;
 import br.com.ifba.salmos.item.dao.IDaoItem;
 import br.com.ifba.salmos.item.model.Item;
-import java.util.List;
 
 /**
  *
@@ -32,7 +32,7 @@ public class ServiceItem implements IServiceItem{
     
     //Criando objeto de instância
     
-    private final IDaoItem daoItem = new DaoItem();
+    private IDaoItem daoItem;
 
     @Override
     public Item saveItem(Item item) {
@@ -52,7 +52,7 @@ public class ServiceItem implements IServiceItem{
         } else if(daoItem.findById(item.getId()) == null){
             throw new BusinessException(ITEM_EXISTE);
         } else{
-            return daoItem.update(item);
+            return daoItem.save(item);
         }
     }
 

@@ -4,21 +4,24 @@
  */
 package br.com.ifba.salmos.usuario.service;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import br.com.ifba.salmos.usuario.dao.DaoUsuario;
 import br.com.ifba.salmos.usuario.dao.IDaoUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
-import java.util.List;
-import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author vitor
  */
+@Service
 public class ServiceUsuario implements IServiceUsuario{
     
+    //OBJETO
+    private IDaoUsuario daoUsuario;
+
     //CONSTANTES
     
     //mensagem de erro se o Usuario for null;
@@ -33,11 +36,6 @@ public class ServiceUsuario implements IServiceUsuario{
     //mensagem de erro se o Usuario for inválido;
     public final static String USUARIO_INVALIDO = "Usuário inválido";
     
-    //OBJETO
-    
-    private final IDaoUsuario daoUsuario = new DaoUsuario();
-        
-
     @Override
     public Usuario saveUsuario(Usuario usuario) {
         if(usuario == null){
@@ -47,17 +45,6 @@ public class ServiceUsuario implements IServiceUsuario{
         } else {
             return daoUsuario.save(usuario);
         }
-    }
-
-    @Override
-    public Usuario updateUsuario(Usuario usuario) {
-        if(usuario == null){
-            throw new BusinessException(USUARIO_NULL);
-        } else if(daoUsuario.findById(usuario.getId()) == null) {
-            throw new BusinessException(USUARIO_EXISTE);
-        } else {
-            return daoUsuario.update(usuario);
-        }    
     }
 
     @Override

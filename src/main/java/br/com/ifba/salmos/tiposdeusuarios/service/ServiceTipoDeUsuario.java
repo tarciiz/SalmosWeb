@@ -4,11 +4,11 @@
  */
 package br.com.ifba.salmos.tiposdeusuarios.service;
 
+import java.util.List;
+
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import br.com.ifba.salmos.tiposdeusuarios.dao.DaoTipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuarios.dao.IDaoTipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
-import java.util.List;
 
 /**
  *
@@ -32,7 +32,7 @@ public class ServiceTipoDeUsuario implements IServiceTipoDeUsuario{
     
     //OBJETO
     
-    private final IDaoTipoDeUsuario daoTipoDeUsuario = new DaoTipoDeUsuario();
+    private IDaoTipoDeUsuario daoTipoDeUsuario;
 
     @Override
     public TipoDeUsuario saveTipoDeUsuario(TipoDeUsuario tipoDeUsuario) {
@@ -52,7 +52,7 @@ public class ServiceTipoDeUsuario implements IServiceTipoDeUsuario{
         } else if(daoTipoDeUsuario.findById(tipoDeUsuario.getId()) == null) {
             throw new BusinessException(USUARIO_NAO_EXISTE);
         } else {
-            return daoTipoDeUsuario.update(tipoDeUsuario);
+            return daoTipoDeUsuario.save(tipoDeUsuario);
         }
     }
 

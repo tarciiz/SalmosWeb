@@ -4,16 +4,19 @@
  */
 package br.com.ifba.salmos.fornecedor.service;
 
-import br.com.ifba.salmos.fornecedor.dao.DaoFornecedor;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import br.com.ifba.salmos.fornecedor.dao.IDaoFornecedor;
 import br.com.ifba.salmos.fornecedor.model.Fornecedor;
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import java.util.List;
 
 /**
  *
  * @author vitor
  */
+@Service
 public class ServiceFornecedor implements IServiceFornecedor{
     
     //Constantes para condições de erro
@@ -32,7 +35,7 @@ public class ServiceFornecedor implements IServiceFornecedor{
     
     //Criando objeto de instância
     
-    private final IDaoFornecedor daoFornecedor = new DaoFornecedor();
+    private IDaoFornecedor daoFornecedor;
     
     @Override
     public Fornecedor saveFornecedor(Fornecedor fornecedor) {
@@ -52,7 +55,7 @@ public class ServiceFornecedor implements IServiceFornecedor{
         } else if(daoFornecedor.findById(fornecedor.getId()) == null){
             throw new BusinessException(FORNECEDOR_EXISTE);
         } else{
-            return daoFornecedor.update(fornecedor);
+            return daoFornecedor.save(fornecedor);
         }
     }
 

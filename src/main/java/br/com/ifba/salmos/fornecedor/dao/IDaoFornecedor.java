@@ -4,14 +4,17 @@
  */
 package br.com.ifba.salmos.fornecedor.dao;
 
-import br.com.ifba.salmos.fornecedor.model.Fornecedor;
-import br.com.ifba.salmos.infrastructure.dao.IBaseDAO;
 import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import br.com.ifba.salmos.fornecedor.model.Fornecedor;
 
 /**
  *
  * @author vitor
  */
-public interface IDaoFornecedor extends IBaseDAO<Fornecedor>{
+public interface IDaoFornecedor extends JpaRepository<Fornecedor, Long>{
+    
     public abstract List<Fornecedor> findByName(String name);
 }

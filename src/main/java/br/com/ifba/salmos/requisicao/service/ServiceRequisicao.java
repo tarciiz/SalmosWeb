@@ -4,11 +4,11 @@
  */
 package br.com.ifba.salmos.requisicao.service;
 
+import java.util.List;
+
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import br.com.ifba.salmos.requisicao.dao.DaoRequisicao;
 import br.com.ifba.salmos.requisicao.dao.IDaoRequisicao;
 import br.com.ifba.salmos.requisicao.model.Requisicao;
-import java.util.List;
 
 /**
  *
@@ -32,7 +32,7 @@ public class ServiceRequisicao implements IServiceRequisicao{
     
     //OBJETO
     
-    private final IDaoRequisicao daoRequisicao = new DaoRequisicao();
+    private IDaoRequisicao daoRequisicao;
 
     @Override
     public Requisicao saveRequisicao(Requisicao requisicao) {
@@ -52,7 +52,7 @@ public class ServiceRequisicao implements IServiceRequisicao{
         } else if(daoRequisicao.findById(requisicao.getId()) == null) {
             throw new BusinessException(REQUISICAO_NAO_EXISTE);
         } else {
-            return daoRequisicao.update(requisicao);
+            return daoRequisicao.save(requisicao);
         }
     }
 

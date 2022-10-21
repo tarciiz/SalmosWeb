@@ -12,9 +12,10 @@ import java.util.List;
  * @author vitor
  */
 public interface IServiceUsuario {
+
     public abstract Usuario saveUsuario(Usuario usuario);
-    public abstract Usuario updateUsuario(Usuario usuario);
     public abstract void deleteUsuario(Usuario usuario);
     public abstract List<Usuario> getAllUsuarios();
     public List<Usuario> findByName(String name);
+
 }

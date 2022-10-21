@@ -4,15 +4,13 @@
  */
 package br.com.ifba.salmos.usuario.model;
 
-import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
-import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
-import br.com.ifba.salmos.tiposdeusuarios.view.ViewTipoDeUsuario;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
 
 /**
  *

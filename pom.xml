@@ -13,10 +13,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>salmos</name>
 	<description>Salmos</description>
+	
 	<properties>
 		<java.version>17</java.version>
 		<start-class>br.com.ifba.salmos.SalmosApplication</start-class>
 	</properties>
+	
 	<dependencies>
 
 		<dependency>

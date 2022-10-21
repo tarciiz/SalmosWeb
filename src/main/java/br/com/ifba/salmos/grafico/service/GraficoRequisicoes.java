@@ -7,7 +7,6 @@ package br.com.ifba.salmos.grafico.service;
 import br.com.ifba.salmos.requisicao.model.Requisicao;
 import java.awt.Dimension;
 import java.util.Collection;
-import java.util.List;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
