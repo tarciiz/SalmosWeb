@@ -75,6 +75,11 @@ public class SalmosController {
     @Autowired
     private IServiceTipoDeUsuario serviceTipoUsuario;
 
+    @RequestMapping(path = "/tipodeusuarios")
+    public List<TipoDeUsuario> salvarTipoDeUsuario() {
+        return (List<TipoDeUsuario>) serviceTipoUsuario.getAllTipoDeUsuario();
+    }
+
     @RequestMapping(path = "/salvarTipoDeUsuario", method = RequestMethod.POST)
     public TipoDeUsuario salvarTipoDeUsuario(@RequestBody String tipodeusuario) {
         TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario, TipoDeUsuario.class);
