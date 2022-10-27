@@ -60,6 +60,14 @@ public class SalmosController {
         return serviceUsuario.saveUsuario(user);
     }
 
+    @RequestMapping(path = "/atualizarUsuario", method = RequestMethod.POST)
+    public Usuario atualizarUsuario(@RequestBody String usuario) {
+        Usuario user = (Usuario) gson.fromJson(usuario, Usuario.class);
+        if (user.getId() == null)
+            return null;
+        return serviceUsuario.saveUsuario(user);
+    }
+
     @RequestMapping(path = "/deletarUsuario", method = RequestMethod.GET)
     public boolean deletarUsuario(Long id) {
         Usuario user = new Usuario();
