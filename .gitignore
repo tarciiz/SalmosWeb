@@ -35,3 +35,7 @@ build/
 ### Persistence ###
 src/main/java/META-INF/
 src/main/java/META-INF/persistence.xml
+
+### Application ###
+src/main/resources/templates/
+src/main/resources/templates/application.properties

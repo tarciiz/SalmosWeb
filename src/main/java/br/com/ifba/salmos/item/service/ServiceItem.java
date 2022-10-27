@@ -9,6 +9,7 @@ import java.util.List;
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 import br.com.ifba.salmos.item.dao.IDaoItem;
 import br.com.ifba.salmos.item.model.Item;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -31,7 +32,7 @@ public class ServiceItem implements IServiceItem {
     public final static String ITEM_INVALIDO = "Item inválido";
 
     // Criando objeto de instância
-
+    @Autowired
     private IDaoItem daoItem;
 
     @Override

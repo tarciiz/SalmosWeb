@@ -4,6 +4,7 @@
  */
 package br.com.ifba.salmos.fornecedor.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class ServiceFornecedor implements IServiceFornecedor {
     public final static String FORNECEDOR_INVALIDO = "Fornecedor inválido";
 
     // Criando objeto de instância
-
+    @Autowired
     private IDaoFornecedor daoFornecedor;
 
     @Override

@@ -9,6 +9,7 @@ import java.util.List;
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 import br.com.ifba.salmos.requisicao.dao.IDaoRequisicao;
 import br.com.ifba.salmos.requisicao.model.Requisicao;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -31,7 +32,7 @@ public class ServiceRequisicao implements IServiceRequisicao {
     public final static String REQUISICAO_INVALIDO = "Requisição inválida";
 
     // OBJETO
-
+    @Autowired
     private IDaoRequisicao daoRequisicao;
 
     @Override

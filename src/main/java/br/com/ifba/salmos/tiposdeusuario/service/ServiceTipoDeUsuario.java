@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 import br.com.ifba.salmos.tiposdeusuario.dao.IDaoTipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -34,7 +35,7 @@ public class ServiceTipoDeUsuario implements IServiceTipoDeUsuario {
     public final static String USUARIO_INVALIDO = "Tipo de Usuário inválido";
 
     // OBJETO
-
+    @Autowired
     private IDaoTipoDeUsuario daoTipoDeUsuario;
 
     @Override

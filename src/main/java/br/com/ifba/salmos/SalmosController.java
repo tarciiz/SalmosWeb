@@ -75,7 +75,7 @@ public class SalmosController {
     @Autowired
     private IServiceTipoDeUsuario serviceTipoUsuario;
 
-    @RequestMapping(path = "/tipodeusuarios")
+    @RequestMapping(path = "/tipodeusuario")
     public List<TipoDeUsuario> salvarTipoDeUsuario() {
         return (List<TipoDeUsuario>) serviceTipoUsuario.getAllTipoDeUsuario();
     }

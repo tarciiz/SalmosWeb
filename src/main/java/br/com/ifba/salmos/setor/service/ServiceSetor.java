@@ -9,6 +9,7 @@ import java.util.List;
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 import br.com.ifba.salmos.setor.dao.IDaoSetor;
 import br.com.ifba.salmos.setor.model.Setor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -31,6 +32,7 @@ public class ServiceSetor implements IServiceSetor {
     public final static String SETOR_INVALIDO = "Setor inválido";
 
     // Objeto
+    @Autowired
     private IDaoSetor daoSetor;
 
     @Override
