@@ -5,6 +5,7 @@
 package br.com.ifba.salmos.usuario.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,7 +76,8 @@ public class ServiceUsuario implements IServiceUsuario {
 
     @Override
     public Usuario findById(Long id) {
-        return (Usuario) daoUsuario.findById(id).get();
+        Optional<Usuario> user = daoUsuario.findById(id);
+        return user.isPresent() ? user.get() : null;
     }
 
 }

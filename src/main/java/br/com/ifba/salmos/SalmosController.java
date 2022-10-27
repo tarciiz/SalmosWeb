@@ -50,7 +50,8 @@ public class SalmosController {
     }
 
     @RequestMapping(path = "/usuario/{id}")
-    public Usuario getUsuario(@PathVariable("id") Long id) {
+    public Usuario getUsuario(@PathVariable Long id) {
+        System.out.println("Id " + id);
         return (Usuario) this.serviceUsuario.findById(id);
     }
 
