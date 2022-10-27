@@ -7,6 +7,9 @@ package br.com.ifba.salmos.tiposdeusuario.model;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.usuario.model.Usuario;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,9 +35,6 @@ import lombok.ToString;
 @ToString
 
 public class TipoDeUsuario extends PersistenceEntity {
-
-    @OneToMany(mappedBy = "tipodeusuario")
-    private List<Usuario> usuarios;
 
     private String descricao;
     private int nivelAcesso;
