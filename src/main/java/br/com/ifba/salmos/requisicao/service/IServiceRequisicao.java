@@ -13,8 +13,10 @@ import java.util.List;
  */
 public interface IServiceRequisicao {
     public abstract Requisicao saveRequisicao(Requisicao requisicao);
+
     public abstract Requisicao updateRequisicao(Requisicao requisicao);
+
     public abstract void deleteRequisicao(Requisicao requisicao);
+
     public abstract List<Requisicao> getAllRequisicao();
-    public List<Requisicao> findByName(String name);
 }

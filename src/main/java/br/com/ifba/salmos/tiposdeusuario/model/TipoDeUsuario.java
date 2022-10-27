@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.salmos.tiposdeusuarios.model;
+package br.com.ifba.salmos.tiposdeusuario.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.usuario.model.Usuario;
@@ -16,24 +16,17 @@ import javax.persistence.Table;
 /**
  *
  * @author Igor Lopes
+ *         editted by tarciiz
  */
 @Entity
-@Table
-public class TipoDeUsuario extends PersistenceEntity{
-    
-    @OneToMany(mappedBy = "tipodeusuarios")
+@Table(name = "tipodeusuario")
+public class TipoDeUsuario extends PersistenceEntity {
+
+    @OneToMany(mappedBy = "tipodeusuario")
     private List<Usuario> usuarios;
-    
-    private String nome;
+
     private String descricao;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    private int nivelAcesso;
 
     public String getDescricao() {
         return descricao;
@@ -43,11 +36,17 @@ public class TipoDeUsuario extends PersistenceEntity{
         this.descricao = descricao;
     }
 
+    public int getNivelAcesso() {
+        return nivelAcesso;
+    }
+
+    public void setNivelAcesso(int nivelAcesso) {
+        this.nivelAcesso = nivelAcesso;
+    }
+
     @Override
     public String toString() {
-        return "TiposDeUsuarios{" + "nome=" + nome + ", descricao=" + descricao + '}';
+        return "TiposDeUsuarios{" + "nome=" + this.getNome() + ", descricao=" + descricao + '}';
     }
 
 }
-
-

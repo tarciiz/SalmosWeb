@@ -17,58 +17,54 @@ import br.com.ifba.salmos.infrastructure.exception.BusinessException;
  * @author vitor
  */
 @Service
-public class ServiceFornecedor implements IServiceFornecedor{
-    
-    //Constantes para condições de erro
-    
-    //Fornecedor Null
+public class ServiceFornecedor implements IServiceFornecedor {
+
+    // Constantes para condições de erro
+
+    // Fornecedor Null
     public final static String FORNECEDOR_NULL = "Fornecedor null";
-    
-    //Fornecedor já existe
+
+    // Fornecedor já existe
     public final static String FORNECEDOR_EXISTE = "Fornecedor já existe";
-    
-    //Fornecedor não existente
+
+    // Fornecedor não existente
     public final static String FORNECEDOR_NAO_EXISTE = "O Fornecedor já existe na base de dados";
-    
-    //Fornecedor inválido
+
+    // Fornecedor inválido
     public final static String FORNECEDOR_INVALIDO = "Fornecedor inválido";
-    
-    //Criando objeto de instância
-    
+
+    // Criando objeto de instância
+
     private IDaoFornecedor daoFornecedor;
-    
+
     @Override
     public Fornecedor saveFornecedor(Fornecedor fornecedor) {
-        if(fornecedor == null){
+        if (fornecedor == null) {
             throw new BusinessException(FORNECEDOR_NULL);
-        } else if(daoFornecedor.findById(fornecedor.getId()) != null){
-            throw new BusinessException(FORNECEDOR_EXISTE);
-        } else{
+        } else {
             return daoFornecedor.save(fornecedor);
         }
     }
 
     @Override
     public Fornecedor updateFornecedor(Fornecedor fornecedor) {
-        if(fornecedor == null){
+        if (fornecedor == null) {
             throw new BusinessException(FORNECEDOR_NULL);
-        } else if(daoFornecedor.findById(fornecedor.getId()) == null){
+        } else if (daoFornecedor.findById(fornecedor.getId()) == null) {
             throw new BusinessException(FORNECEDOR_EXISTE);
-        } else{
+        } else {
             return daoFornecedor.save(fornecedor);
         }
     }
 
     @Override
     public void deleteFornecedor(Fornecedor fornecedor) {
-        if(fornecedor == null){
+        if (fornecedor == null) {
             throw new BusinessException(FORNECEDOR_NULL);
-        } else if(daoFornecedor.findById(fornecedor.getId()) != null){
+        } else {
             this.daoFornecedor.delete(fornecedor);
             return;
-        } 
-        
-        throw new BusinessException(FORNECEDOR_NAO_EXISTE);
+        }
     }
 
     @Override
@@ -76,15 +72,4 @@ public class ServiceFornecedor implements IServiceFornecedor{
         return daoFornecedor.findAll();
     }
 
-    @Override
-    public List<Fornecedor> findByName(String name) {
-        if(name == null){
-            throw new BusinessException("Nome null");
-        } else if(name.isEmpty()){
-            throw new BusinessException("Nome vazio");
-        } else {
-            return daoFornecedor.findByName(name);
-        }
-    }
-    
 }

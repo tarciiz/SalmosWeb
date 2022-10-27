@@ -13,6 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Igor Lopes
  */
-public interface IDaoRequisicao extends JpaRepository<Requisicao, Long>{
-     public List<Requisicao> findByName(String name);
+public interface IDaoRequisicao extends JpaRepository<Requisicao, Long> {
+     public List<Requisicao> findByNome(String name);
 }

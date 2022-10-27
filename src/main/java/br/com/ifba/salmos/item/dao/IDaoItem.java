@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author vitor
  */
-public interface IDaoItem extends JpaRepository<Item, Long>{
+public interface IDaoItem extends JpaRepository<Item, Long> {
 
-    public abstract List<Item> findByName(String name);
+    public abstract List<Item> findByNome(String name);
 }

@@ -13,8 +13,11 @@ import java.util.List;
  */
 public interface IServiceFornecedor {
     public abstract Fornecedor saveFornecedor(Fornecedor fornecedor);
+
     public abstract Fornecedor updateFornecedor(Fornecedor fornecedor);
+
     public abstract void deleteFornecedor(Fornecedor fornecedor);
+
     public abstract List<Fornecedor> getAllFornecedor();
-    public List<Fornecedor> findByName(String name);
+
 }

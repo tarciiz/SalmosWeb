@@ -3,6 +3,7 @@ package br.com.ifba.salmos;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
-import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
-import br.com.ifba.salmos.tiposdeusuarios.service.IServiceTipoDeUsuario;
+import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
+import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
 import br.com.ifba.salmos.usuario.service.IServiceUsuario;
 
@@ -21,10 +22,9 @@ import br.com.ifba.salmos.usuario.service.IServiceUsuario;
 public class SalmosController {
     Gson gson = new Gson();
 
-    
-
     @RequestMapping(path = "/hello")
     public String helloWorld(@RequestParam String name) {
+
         return "Hello " + name + "!";
     }
 
@@ -49,6 +49,10 @@ public class SalmosController {
         return serviceUsuario.getAllUsuarios();
     }
 
+    @RequestMapping(path = "/usuario/{id}")
+    public Usuario getUsuario(@PathVariable("id") Long id) {
+        return (Usuario) this.serviceUsuario.findById(id);
+    }
 
     @RequestMapping(path = "/salvarUsuario", method = RequestMethod.POST)
     public Usuario salvarUsuario(@RequestBody String usuario) {
@@ -72,11 +76,9 @@ public class SalmosController {
     private IServiceTipoDeUsuario serviceTipoUsuario;
 
     @RequestMapping(path = "/salvarTipoDeUsuario", method = RequestMethod.POST)
-    public TipoDeUsuario salvarTipoDeUsuario(@RequestBody String tipodeusuario){
-        TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario,  TipoDeUsuario.class);
+    public TipoDeUsuario salvarTipoDeUsuario(@RequestBody String tipodeusuario) {
+        TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario, TipoDeUsuario.class);
         return serviceTipoUsuario.saveTipoDeUsuario(tusuario);
     }
-
-
 
 }

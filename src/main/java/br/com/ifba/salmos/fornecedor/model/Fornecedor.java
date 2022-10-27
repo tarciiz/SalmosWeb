@@ -14,21 +14,11 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table
+@Table(name = "fornecedor")
 
-public class Fornecedor extends PersistenceEntity{
-    
-    private String nome;
+public class Fornecedor extends PersistenceEntity {
     private String email;
     private String telefone;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getEmail() {
         return email;
@@ -45,5 +35,5 @@ public class Fornecedor extends PersistenceEntity{
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-    
+
 }

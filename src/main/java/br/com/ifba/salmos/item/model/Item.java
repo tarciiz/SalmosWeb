@@ -17,24 +17,16 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table
-public class Item extends PersistenceEntity{
+@Table(name = "item")
+public class Item extends PersistenceEntity {
 
-    @ManyToMany(mappedBy = "itensRequisitados") //adicionado pra salvar requisição no banco
-    private List<Requisicao> requisicoes;   // fazendo os testes ainda, uma requisição de vários itens e um item pode estar em várias requisições
-    
-    private String nome;
+    @ManyToMany(mappedBy = "itensRequisitados") // adicionado pra salvar requisição no banco
+    private List<Requisicao> requisicoes; // fazendo os testes ainda, uma requisição de vários itens e um item pode
+                                          // estar em várias requisições
+
     private String Descricao;
     private int quantidade;
     private String fornecedor;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getDescricao() {
         return Descricao;
@@ -59,6 +51,5 @@ public class Item extends PersistenceEntity{
     public void setFornecedor(String fornecedor) {
         this.fornecedor = fornecedor;
     }
-    
-    
+
 }

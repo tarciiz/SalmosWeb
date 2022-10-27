@@ -12,19 +12,18 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 /**
  *
  * @author Igor Lopes
  */
 @Entity
-@Table
-public class Requisicao extends PersistenceEntity{
+@Table(name = "requisicao")
+public class Requisicao extends PersistenceEntity {
     private String setor;
-    private long idUsuario;    
-    @ManyToMany 
+    private long idUsuario;
+    @ManyToMany
     private Collection<Item> itensRequisitados;
-        
+
     public String getSetor() {
         return setor;
     }
@@ -48,9 +47,9 @@ public class Requisicao extends PersistenceEntity{
     public void setListaItens(Collection<Item> listaItens) {
         this.itensRequisitados = listaItens;
     }
-    
+
     @Override
     public String toString() {
         return "Requisicao{" + "setor=" + setor + ", usuario=" + idUsuario + ", listaItens=" + itensRequisitados;
-    }    
+    }
 }

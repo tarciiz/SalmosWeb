@@ -12,21 +12,14 @@ import javax.persistence.Table;
  *
  * @author Everton.
  */
-@Entity//Indicando que essa classe é uma das que vão se tornar persistivél no banco de dados.
-@Table
-public class Setor extends PersistenceEntity{
-    //Atributos
-    private String nome;
+@Entity // Indicando que essa classe é uma das que vão se tornar persistivél no banco de
+        // dados.
+@Table(name = "setor")
+public class Setor extends PersistenceEntity {
+    // Atributos
     private String descrição;
 
-    //Getters e setters.
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+    // Getters e setters.
 
     public String getDescrição() {
         return descrição;
@@ -35,6 +28,5 @@ public class Setor extends PersistenceEntity{
     public void setDescrição(String descrição) {
         this.descrição = descrição;
     }
-    
-    
+
 }

@@ -14,59 +14,55 @@ import br.com.ifba.salmos.item.model.Item;
  *
  * @author vitor
  */
-public class ServiceItem implements IServiceItem{
-    
-    //Constantes para condições de erro
-    
-    //Item Null
+public class ServiceItem implements IServiceItem {
+
+    // Constantes para condições de erro
+
+    // Item Null
     public final static String ITEM_NULL = "Item null";
-    
-    //Item já existe
+
+    // Item já existe
     public final static String ITEM_EXISTE = "Item já existe";
-    
-    //Item não existente
+
+    // Item não existente
     public final static String ITEM_NAO_EXISTE = "O item já existe na base de dados";
-    
-    //Item inválido
+
+    // Item inválido
     public final static String ITEM_INVALIDO = "Item inválido";
-    
-    //Criando objeto de instância
-    
+
+    // Criando objeto de instância
+
     private IDaoItem daoItem;
 
     @Override
     public Item saveItem(Item item) {
-        if(item == null){
+        if (item == null) {
             throw new BusinessException(ITEM_NULL);
-        } else if(daoItem.findById(item.getId()) != null){
-            throw new BusinessException(ITEM_EXISTE);
-        } else{
+        } else {
             return daoItem.save(item);
         }
     }
 
     @Override
     public Item updateItem(Item item) {
-        if(item == null){
+        if (item == null) {
             throw new BusinessException(ITEM_NULL);
-        } else if(daoItem.findById(item.getId()) == null){
+        } else if (daoItem.findById(item.getId()) == null) {
             throw new BusinessException(ITEM_EXISTE);
-        } else{
+        } else {
             return daoItem.save(item);
         }
     }
 
     @Override
     public void deleteItem(Item item) {
-        if(item == null){
+        if (item == null) {
             throw new BusinessException(ITEM_NULL);
-        } else if(daoItem.findById(item.getId()) != null){
+        } else {
             this.daoItem.delete(item);
             return;
-        } 
-        
-        throw new BusinessException(ITEM_NAO_EXISTE);
-        
+        }
+
     }
 
     @Override
@@ -75,15 +71,14 @@ public class ServiceItem implements IServiceItem{
     }
 
     @Override
-    public List<Item> findByName(String name) {
-        if(name == null){
+    public List<Item> findByNome(String name) {
+        if (name == null) {
             throw new BusinessException("Nome null");
-        } else if(name.isEmpty()){
+        } else if (name.isEmpty()) {
             throw new BusinessException("Nome vazio");
         } else {
-            return daoItem.findByName(name);
+            return daoItem.findByNome(name);
         }
     }
-    
-    
+
 }

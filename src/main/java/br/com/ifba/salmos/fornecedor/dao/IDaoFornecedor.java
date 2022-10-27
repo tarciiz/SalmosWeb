@@ -14,7 +14,6 @@ import br.com.ifba.salmos.fornecedor.model.Fornecedor;
  *
  * @author vitor
  */
-public interface IDaoFornecedor extends JpaRepository<Fornecedor, Long>{
-    
-    public abstract List<Fornecedor> findByName(String name);
+public interface IDaoFornecedor extends JpaRepository<Fornecedor, Long> {
+
 }

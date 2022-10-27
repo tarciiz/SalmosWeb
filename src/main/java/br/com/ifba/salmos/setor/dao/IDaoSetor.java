@@ -13,6 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Everton de Tarcísio
  */
-public interface IDaoSetor extends JpaRepository<Setor, Long>{
-   public abstract List<Setor> findByName(String name);
+public interface IDaoSetor extends JpaRepository<Setor, Long> {
+   public abstract List<Setor> findByNome(String name);
 }

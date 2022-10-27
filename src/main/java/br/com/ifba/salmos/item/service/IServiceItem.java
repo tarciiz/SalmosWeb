@@ -13,8 +13,12 @@ import java.util.List;
  */
 public interface IServiceItem {
     public abstract Item saveItem(Item item);
+
     public abstract Item updateItem(Item item);
+
     public abstract void deleteItem(Item item);
+
     public abstract List<Item> getAllItens();
-    public List<Item> findByName(String name);
+
+    public List<Item> findByNome(String name);
 }

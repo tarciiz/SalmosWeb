@@ -7,10 +7,11 @@ package br.com.ifba.salmos.usuario.model;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
-import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
+import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 
 /**
  *
@@ -18,12 +19,11 @@ import br.com.ifba.salmos.tiposdeusuarios.model.TipoDeUsuario;
  */
 
 @Entity
-@Table
+@Table(name = "usuario")
 public class Usuario extends PersistenceEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "TipoDeUsuario_ID", referencedColumnName = "ID")
-    private TipoDeUsuario tipodeusuarios;
+    @OneToOne
+    private TipoDeUsuario tipodeusuario;
 
     /*
      * @OneToOne(cascade = CascadeType.ALL)
@@ -33,18 +33,15 @@ public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
     private String email;
-    private String nome;
-    private String tipodeusuario;
 
     public Usuario() {
     }
 
-    public Usuario(String login, String senha, String email, String nome, String tipodeusuario) {
+    public Usuario(String login, String senha, String email, String nome) {
         this.login = login;
         this.senha = senha;
         this.email = email;
-        this.nome = nome;
-        this.tipodeusuario = tipodeusuario;
+        this.setNome(nome);
     }
 
     public String getLogin() {
@@ -71,28 +68,12 @@ public class Usuario extends PersistenceEntity {
         this.email = email;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getTipodeusuario() {
+    public TipoDeUsuario getTipodeusuario() {
         return tipodeusuario;
     }
 
-    public void setTipodeusuario(String tipodeusuario) {
+    public void setTipodeusuario(TipoDeUsuario tipodeusuario) {
         this.tipodeusuario = tipodeusuario;
-    }
-
-    public TipoDeUsuario getTipodeusuarios() {
-        return tipodeusuarios;
-    }
-
-    public void setTipodeusuarios(TipoDeUsuario tipodeusuarios) {
-        this.tipodeusuarios = tipodeusuarios;
     }
 
 }

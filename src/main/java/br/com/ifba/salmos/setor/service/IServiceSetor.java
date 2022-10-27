@@ -12,10 +12,14 @@ import java.util.List;
  * @author Everton e Tarcísio.
  */
 public interface IServiceSetor {
-    
+
     public abstract Setor saveSetor(Setor setor);
+
     public abstract Setor updateSetor(Setor setor);
+
     public abstract void deleteSetor(Setor setor);
+
     public abstract List<Setor> getAllSetor();
-    public List <Setor> findByName(String name);   
+
+    public List<Setor> findByNome(String name);
 }
