@@ -6,6 +6,7 @@ package br.com.ifba.salmos.tiposdeusuario.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
@@ -34,7 +35,7 @@ public class ServiceTipoDeUsuario implements IServiceTipoDeUsuario {
     public final static String USUARIO_INVALIDO = "Tipo de Usuário inválido";
 
     // OBJETO
-
+    @Autowired
     private IDaoTipoDeUsuario daoTipoDeUsuario;
 
     @Override
@@ -68,7 +69,7 @@ public class ServiceTipoDeUsuario implements IServiceTipoDeUsuario {
 
     @Override
     public List<TipoDeUsuario> getAllTipoDeUsuario() {
-        return this.daoTipoDeUsuario.findAll();
+        return (List<TipoDeUsuario>)this.daoTipoDeUsuario.findAll();
     }
 
     @Override
