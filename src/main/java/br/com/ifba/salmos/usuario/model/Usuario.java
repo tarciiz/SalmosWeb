@@ -12,6 +12,11 @@ import javax.persistence.Table;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -20,6 +25,12 @@ import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 
 @Entity
 @Table(name = "usuario")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+
 public class Usuario extends PersistenceEntity {
 
     @OneToOne
@@ -33,47 +44,5 @@ public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
     private String email;
-
-    public Usuario() {
-    }
-
-    public Usuario(String login, String senha, String email, String nome) {
-        this.login = login;
-        this.senha = senha;
-        this.email = email;
-        this.setNome(nome);
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public TipoDeUsuario getTipodeusuario() {
-        return tipodeusuario;
-    }
-
-    public void setTipodeusuario(TipoDeUsuario tipodeusuario) {
-        this.tipodeusuario = tipodeusuario;
-    }
 
 }

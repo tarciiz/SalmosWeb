@@ -10,6 +10,11 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -18,38 +23,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "item")
-public class Item extends PersistenceEntity {
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 
-    @ManyToMany(mappedBy = "itensRequisitados") // adicionado pra salvar requisição no banco
-    private List<Requisicao> requisicoes; // fazendo os testes ainda, uma requisição de vários itens e um item pode
-                                          // estar em várias requisições
+public class Item extends PersistenceEntity {
 
     private String Descricao;
     private int quantidade;
     private String fornecedor;
-
-    public String getDescricao() {
-        return Descricao;
-    }
-
-    public void setDescricao(String Descricao) {
-        this.Descricao = Descricao;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    public String getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(String fornecedor) {
-        this.fornecedor = fornecedor;
-    }
 
 }

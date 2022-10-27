@@ -12,6 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  *
@@ -20,6 +25,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tipodeusuario")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+
 public class TipoDeUsuario extends PersistenceEntity {
 
     @OneToMany(mappedBy = "tipodeusuario")
@@ -27,26 +38,5 @@ public class TipoDeUsuario extends PersistenceEntity {
 
     private String descricao;
     private int nivelAcesso;
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public int getNivelAcesso() {
-        return nivelAcesso;
-    }
-
-    public void setNivelAcesso(int nivelAcesso) {
-        this.nivelAcesso = nivelAcesso;
-    }
-
-    @Override
-    public String toString() {
-        return "TiposDeUsuarios{" + "nome=" + this.getNome() + ", descricao=" + descricao + '}';
-    }
 
 }
