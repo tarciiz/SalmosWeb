@@ -95,7 +95,7 @@ public class SalmosController {
         return serviceTipoUsuario.saveTipoDeUsuario(tusuario);
     }
 
-    @RequestMapping(path = "/deletarTipoDeUsuario", method = RequestMethod.GET) // Criando o link para usar no frontend
+    @RequestMapping(path = "deletarTipoDeUsuario", method = RequestMethod.GET) // Criando o link para usar no frontend
     public boolean deletarTipoDeUsuario(Long id) {// Criando fução de excluir
         TipoDeUsuario tusuario = new TipoDeUsuario();// criando um objeto instanciado do tipo de objeto
         tusuario.setId(id);// pegando o id passado por parâmetro e passando para o objeto
