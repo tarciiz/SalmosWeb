@@ -64,7 +64,8 @@ public class ServiceTipoDeUsuario implements IServiceTipoDeUsuario {
         if (tipoDeUsuario == null) {
             throw new BusinessException(USUARIO_NULL);
         } else {
-            throw new BusinessException(USUARIO_NAO_EXISTE);
+            this.daoTipoDeUsuario.delete(tipoDeUsuario);
+            return;
         }
     }
 
