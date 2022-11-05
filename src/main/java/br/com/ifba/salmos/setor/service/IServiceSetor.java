@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Everton e Tarcísio.
+ * @author Everton.
  */
 public interface IServiceSetor {
 

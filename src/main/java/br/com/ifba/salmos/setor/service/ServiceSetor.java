@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
- * @author Everton e Tarcísio.
+ * @author Everton.
  */
 public class ServiceSetor implements IServiceSetor {
 
