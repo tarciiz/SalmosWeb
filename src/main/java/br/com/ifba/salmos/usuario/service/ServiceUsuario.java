@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
+import br.com.ifba.salmos.infrastructure.support.StringUtil;
 import br.com.ifba.salmos.usuario.dao.IDaoUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
 
@@ -43,9 +44,25 @@ public class ServiceUsuario implements IServiceUsuario {
     public Usuario saveUsuario(Usuario usuario) {
         if (usuario == null) {
             throw new BusinessException(USUARIO_NULL);
-        } else {
-            return daoUsuario.save(usuario);
         }
+
+        // O usuario já existe e está atualizando o usuário
+        Usuario oldUser = this.findById(usuario.getId());
+        if (oldUser != null) {
+            System.out.println("O usuario está sendo atualizado " + usuario.getId());
+            // Busca o usuário salvo no banco para atualizar a senha somente se mudar
+
+            // Verifica se a senha foi atualizada
+            if (oldUser.getSenha() != StringUtil.toMD5(usuario.getSenha())) {
+                usuario.setSenha(StringUtil.toMD5(usuario.getSenha()));
+            }
+        } else {
+            // O usuario está sendo inserido
+            System.out.println("O usuario está sendo inserido");
+            usuario.setSenha(StringUtil.toMD5(usuario.getSenha()));
+        }
+
+        return daoUsuario.save(usuario);
     }
 
     @Override
@@ -77,6 +94,12 @@ public class ServiceUsuario implements IServiceUsuario {
     @Override
     public Usuario findById(Long id) {
         Optional<Usuario> user = daoUsuario.findById(id);
+        return user.isPresent() ? user.get() : null;
+    }
+
+    @Override
+    public Usuario findByLoginOrEmailAndSenha(String login, String email, String senha) {
+        Optional<Usuario> user = daoUsuario.findByLoginOrEmailAndSenha(login, email, senha);
         return user.isPresent() ? user.get() : null;
     }
 

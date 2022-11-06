@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import br.com.ifba.salmos.infrastructure.support.StringUtil;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
@@ -24,8 +25,9 @@ public class SalmosController {
 
     @RequestMapping(path = "/hello")
     public String helloWorld(@RequestParam String name) {
-
-        return "Hello " + name + "!";
+        String usuario = "{senha:'" + name + "'}";
+        Usuario user = (Usuario) gson.fromJson(usuario, Usuario.class);
+        return "Hello " + user.getSenha() + "!";
     }
 
     // ---------------------------------------------------
@@ -36,12 +38,13 @@ public class SalmosController {
 
     @RequestMapping(path = "/login")
     public Usuario login(String login, String senha) {
-        for (Usuario usr : serviceUsuario.getAllUsuarios()) {
-            if (login.equals(usr.getLogin()) && senha.equals(usr.getSenha())) {
-                return usr;
-            }
+        Usuario user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, senha);
+
+        if (user == null) {
+            user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, StringUtil.toMD5(senha));
         }
-        return null;
+
+        return user;
     }
 
     @RequestMapping(path = "/usuarios")

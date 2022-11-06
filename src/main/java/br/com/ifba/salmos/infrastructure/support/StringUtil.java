@@ -5,6 +5,10 @@
  */
 package br.com.ifba.salmos.infrastructure.support;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author @jonatasfbastos
@@ -52,7 +56,8 @@ public class StringUtil {
     }
 
     /**
-     * Validate if a string is null and empty. If is null immediately return <code>true</code>
+     * Validate if a string is null and empty. If is null immediately return
+     * <code>true</code>
      * otherwise test if is empty.
      * 
      * @param str a string to validate.
@@ -80,5 +85,29 @@ public class StringUtil {
      */
     public boolean isNullOrEmpty(final String str) {
         return (isNull(str) || isEmpty(str));
+    }
+
+    public static String toMD5(String plaintext) {
+        try {
+            MessageDigest m = MessageDigest.getInstance("MD5");
+            m.reset();
+            m.update(plaintext.getBytes());
+            byte[] digest = m.digest();
+            BigInteger bigInt = new BigInteger(1, digest);
+            String hashtext = bigInt.toString(16);
+            // Now we need to zero pad it if you actually want the full 32 chars.
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static boolean compareMD5(String md5, String plaintext) {
+        return md5.equals(StringUtil.toMD5(plaintext));
     }
 }

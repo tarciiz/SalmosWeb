@@ -26,4 +26,6 @@ public interface IServiceUsuario {
 
     public Usuario findById(Long id);
 
+    public Usuario findByLoginOrEmailAndSenha(String login, String email, String senha);
+
 }
