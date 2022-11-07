@@ -5,6 +5,7 @@ import br.com.ifba.salmos.item.model.Item;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,8 +21,10 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-public class tipoDeItem extends PersistenceEntity{
+public class tipoDeItem extends PersistenceEntity {
     private String tipoItem;
     private String descricao;
-    private List<Item> listaItens;
+
+    // @ManyToOne
+    // private List<Item> listaItens;
 }

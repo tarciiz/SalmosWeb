@@ -9,6 +9,7 @@ import br.com.ifba.salmos.requisicao.model.Requisicao;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,5 +35,8 @@ public class Item extends PersistenceEntity {
     private String Descricao;
     private int quantidade;
     private String fornecedor;
+
+    @OneToOne
+    private Item item;
 
 }
