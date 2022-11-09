@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.gson.Gson;
 
 import br.com.ifba.salmos.infrastructure.support.StringUtil;
+import br.com.ifba.salmos.requisicoes.service.IServiceRequisicoes;
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
@@ -107,4 +109,29 @@ public class SalmosController {
         return true;
     }
 
+    // ---------------------------------------------------
+    // ------------- Requisições -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceRequisicoes serviceRequisicoes;
+
+    @RequestMapping(path = "/requisicao")
+    public List<Requisicoes> salvarRequisicoes() {
+        return (List<Requisicoes>) serviceRequisicoes.getAllRequisicoes();
+    }
+
+    @RequestMapping(path = "/salvarRequisicoes", method = RequestMethod.POST)
+    public Requisicoes salvarRequisicoes(@RequestBody String requisicoes) {
+        Requisicoes requisicoess = (Requisicoes) gson.fromJson(requisicoes, Requisicoes.class);
+        return serviceRequisicoes.saveRequisicoes(requisicoess);
+    }
+
+    @RequestMapping(path = "deletarRequisicoes", method = RequestMethod.GET) 
+    public boolean deletarRequisicoes(Long id) {
+        Requisicoes requisicoess = new Requisicoes();
+        requisicoess.setId(id);
+        serviceRequisicoes.deleteRequisicoes(requisicoess);
+        return true;
+    }
 }
