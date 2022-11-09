@@ -17,6 +17,8 @@ import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
 import br.com.ifba.salmos.usuario.service.IServiceUsuario;
+import br.com.ifba.salmos.tipodeitem.service.IServiceTipoItem;
+import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
 
 @RestController
 @RequestMapping(path = "/api/v1/app")
@@ -107,4 +109,39 @@ public class SalmosController {
         return true;
     }
 
+
+
+// ---------------------------------------------------
+// ------------- TIPO DE ITEM -----------------------------
+// ---------------------------------------------------
+
+@Autowired
+private IServiceTipoItem serviceTipoItem;
+
+@RequestMapping(path = "/tiposDeItem")
+public List<tipoDeItem> gettTipoDeItem() {
+    return serviceTipoItem.getAlltipoDeItem();
+}
+
+@RequestMapping(path = "/salvarTipoItem", method = RequestMethod.POST)
+    public tipoDeItem salvarTipoDeItem(@RequestBody String tipodeitem) {
+        tipoDeItem tipo = (tipoDeItem) gson.fromJson(tipodeitem, tipoDeItem.class);
+        return serviceTipoItem.savetipoDeItem(tipo);
+    }
+
+    @RequestMapping(path = "/atualizarTipoItem", method = RequestMethod.POST)
+    public tipoDeItem atualizarTipoDeItem(@RequestBody String tipodeitem) {
+        tipoDeItem tipo = (tipoDeItem) gson.fromJson(tipodeitem, tipoDeItem.class);
+        if (tipo.getId() == null)
+            return null;
+        return serviceTipoItem.savetipoDeItem(tipo);
+    }
+
+    @RequestMapping(path = "/deletarTipoItem", method = RequestMethod.GET)
+    public boolean deletarTipoDeItem(Long id) {
+        tipoDeItem tipo = new tipoDeItem();
+        tipo.setId(id);
+        serviceTipoItem.deletetipoDeItem(tipo);
+        return true;
+    }
 }
