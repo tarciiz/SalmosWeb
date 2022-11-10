@@ -117,20 +117,6 @@ public class SalmosController {
         return true;
     }
 
-<<<<<<< HEAD
-
-
-// ---------------------------------------------------
-// ------------- TIPO DE ITEM -----------------------------
-// ---------------------------------------------------
-
-@Autowired
-private IServiceTipoItem serviceTipoItem;
-
-@RequestMapping(path = "/tiposDeItem")
-public List<tipoDeItem> gettTipoDeItem() {
-    return serviceTipoItem.getAlltipoDeItem();
-=======
     // ---------------------------------------------------
     // ------------- Requisições -----------------------------
     // ---------------------------------------------------
@@ -183,16 +169,13 @@ public List<tipoDeItem> gettTipoDeItem() {
         return serviceItem.saveItem(itemm);
     }
 
-    @RequestMapping(path = "deletarItem", method = RequestMethod.GET) // Criando o link para usar no frontend
-    public boolean deletarItem(Long id) {// Criando fução de excluir
-        Item item = new Item();// criando um objeto instanciado do tipo de objeto
-        item.setId(id);// pegando o id passado por parâmetro e passando para o objeto
-        serviceItem.deleteItem(item);// Chamando a função de deletar Tipo de usuário do service e
-        // passando o objeto com o id do objeto que quero excluir.
+    @RequestMapping(path = "deletarItem", method = RequestMethod.GET) 
+    public boolean deletarItem(Long id) {
+        Item item = new Item();
+        item.setId(id);
+        serviceItem.deleteItem(item);
         return true;
     }
-
-
 
     // ---------------------------------------------------
     // ------------- Fornecedor -----------------------------
@@ -207,20 +190,18 @@ public List<tipoDeItem> gettTipoDeItem() {
     }
 
     // ---------------------------------------------------
-    // ------------- Fornecedor -----------------------------
+    // ------------- TIPO DE ITEM -----------------------------
     // ---------------------------------------------------
 
     @Autowired
-    private IServiceSetor serviceSetor;
+    private IServiceTipoItem serviceTipoItem;
 
-    @RequestMapping(path = "/setor")
-    public List<Setor> salvarSetor() {
-        return (List<Setor>) serviceSetor.getAllSetor();
+    @RequestMapping(path = "/tiposDeItem")
+        public List<tipoDeItem> gettTipoDeItem() {
+        return serviceTipoItem.getAlltipoDeItem();
     }
->>>>>>> 1e33c0e6ef18867bba0e3007382cc851332a324e
-}
 
-@RequestMapping(path = "/salvarTipoItem", method = RequestMethod.POST)
+    @RequestMapping(path = "/salvarTipoItem", method = RequestMethod.POST)
     public tipoDeItem salvarTipoDeItem(@RequestBody String tipodeitem) {
         tipoDeItem tipo = (tipoDeItem) gson.fromJson(tipodeitem, tipoDeItem.class);
         return serviceTipoItem.savetipoDeItem(tipo);
@@ -244,12 +225,12 @@ public List<tipoDeItem> gettTipoDeItem() {
 
     //setor
     @Autowired
-    //private IServiceSetor serviceSetor; //  repeated code 
+    private IServiceSetor serviceSetor; 
 
-    //@RequestMapping(path = "/setor")
-    //public List<Setor> salvarSetor() {
-    //    return (List<Setor>) serviceSetor.getAllSetor();
-    //}
+    @RequestMapping(path = "/setor")
+    public List<Setor> salvarSetor() {
+        return (List<Setor>) serviceSetor.getAllSetor();
+    }
 
     @RequestMapping(path = "/salvarSetor", method = RequestMethod.POST)
     public Setor salvarSetor(@RequestBody String ssetor) {
@@ -257,12 +238,11 @@ public List<tipoDeItem> gettTipoDeItem() {
         return serviceSetor.saveSetor(setor);
     }
 
-    @RequestMapping(path = "deletarSetor", method = RequestMethod.GET) // Criando o link para usar no frontend
-    public boolean deletarSetor(Long id) {// Criando fução de excluir
-        Setor setor = new Setor();// criando um objeto instanciado do tipo de objeto
-        setor.setId(id);// pegando o id passado por parâmetro e passando para o objeto
-        serviceSetor.deleteSetor(setor);// Chamando a função de deletar Tipo de usuário do service e
-                                                        // passando o objeto com o id do objeto que quero excluir.
+    @RequestMapping(path = "deletarSetor", method = RequestMethod.GET)
+    public boolean deletarSetor(Long id) {
+        Setor setor = new Setor();
+        setor.setId(id);
+        serviceSetor.deleteSetor(setor);
         return true;
     }
 }
