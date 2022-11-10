@@ -18,6 +18,8 @@ import br.com.ifba.salmos.infrastructure.support.StringUtil;
 import br.com.ifba.salmos.item.model.Item;
 import br.com.ifba.salmos.item.service.IServiceItem;
 import br.com.ifba.salmos.requisicoes.service.IServiceRequisicoes;
+import br.com.ifba.salmos.setor.model.Setor;
+import br.com.ifba.salmos.setor.service.IServiceSetor;
 import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
@@ -161,5 +163,17 @@ public class SalmosController {
     @RequestMapping(path = "/fornecedor")
     public List<Fornecedor> salvarFornecedor() {
         return (List<Fornecedor>) serviceFornecedor.getAllFornecedor();
+    }
+
+    // ---------------------------------------------------
+    // ------------- Fornecedor -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceSetor serviceSetor;
+
+    @RequestMapping(path = "/setor")
+    public List<Setor> salvarSetor() {
+        return (List<Setor>) serviceSetor.getAllSetor();
     }
 }
