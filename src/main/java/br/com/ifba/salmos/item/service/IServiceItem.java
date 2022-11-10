@@ -7,10 +7,13 @@ package br.com.ifba.salmos.item.service;
 import br.com.ifba.salmos.item.model.Item;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author vitor
  */
+@Service
 public interface IServiceItem {
     public abstract Item saveItem(Item item);
 

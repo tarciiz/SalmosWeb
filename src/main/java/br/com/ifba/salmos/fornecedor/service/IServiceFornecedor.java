@@ -7,10 +7,13 @@ package br.com.ifba.salmos.fornecedor.service;
 import br.com.ifba.salmos.fornecedor.model.Fornecedor;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author vitor
  */
+@Service
 public interface IServiceFornecedor {
     public abstract Fornecedor saveFornecedor(Fornecedor fornecedor);
 

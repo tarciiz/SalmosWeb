@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import br.com.ifba.salmos.fornecedor.model.Fornecedor;
+import br.com.ifba.salmos.fornecedor.service.IServiceFornecedor;
 import br.com.ifba.salmos.infrastructure.support.StringUtil;
+import br.com.ifba.salmos.item.model.Item;
+import br.com.ifba.salmos.item.service.IServiceItem;
 import br.com.ifba.salmos.requisicoes.service.IServiceRequisicoes;
 import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
@@ -133,5 +137,29 @@ public class SalmosController {
         requisicoess.setId(id);
         serviceRequisicoes.deleteRequisicoes(requisicoess);
         return true;
+    }
+
+    // ---------------------------------------------------
+    // ------------- Item -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceItem serviceItem;
+
+    @RequestMapping(path = "/item")
+    public List<Item> salvarItem() {
+        return (List<Item>) serviceItem.getAllItens();
+    }
+
+    // ---------------------------------------------------
+    // ------------- Fornecedor -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceFornecedor serviceFornecedor;
+
+    @RequestMapping(path = "/fornecedor")
+    public List<Fornecedor> salvarFornecedor() {
+        return (List<Fornecedor>) serviceFornecedor.getAllFornecedor();
     }
 }
