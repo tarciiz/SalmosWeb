@@ -174,6 +174,14 @@ public List<tipoDeItem> gettTipoDeItem() {
         Item item = (Item) gson.fromJson(itemm, Item.class);
         return serviceItem.saveItem(item);
     }
+    
+    @RequestMapping(path = "/atualizarItem", method = RequestMethod.POST)
+    public Item atualizarItem(@RequestBody String item) {
+        Item itemm = (Item) gson.fromJson(item, Item.class);
+        if (itemm.getId() == null)
+            return null;
+        return serviceItem.saveItem(itemm);
+    }
 
     @RequestMapping(path = "deletarItem", method = RequestMethod.GET) // Criando o link para usar no frontend
     public boolean deletarItem(Long id) {// Criando fução de excluir
