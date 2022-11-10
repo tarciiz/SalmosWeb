@@ -111,7 +111,7 @@ public class SalmosController {
         TipoDeUsuario tusuario = new TipoDeUsuario();// criando um objeto instanciado do tipo de objeto
         tusuario.setId(id);// pegando o id passado por parâmetro e passando para o objeto
         serviceTipoUsuario.deleteTipoDeUsuario(tusuario);// Chamando a função de deletar Tipo de usuário do service e
-                                                         // passando o objeto com o id do objeto que quero excluir.
+    // passando o objeto com o id do objeto que quero excluir.
         return true;
     }
 
@@ -148,10 +148,27 @@ public class SalmosController {
     @Autowired
     private IServiceItem serviceItem;
 
-    @RequestMapping(path = "/item")
+    @RequestMapping(path = "/Item")
     public List<Item> salvarItem() {
         return (List<Item>) serviceItem.getAllItens();
     }
+    
+    @RequestMapping(path = "/salvarItem", method = RequestMethod.POST)
+    public Item salvarItem(@RequestBody String itemm) {
+        Item item = (Item) gson.fromJson(itemm, Item.class);
+        return serviceItem.saveItem(item);
+    }
+
+    @RequestMapping(path = "deletarItem", method = RequestMethod.GET) // Criando o link para usar no frontend
+    public boolean deletarItem(Long id) {// Criando fução de excluir
+        Item item = new Item();// criando um objeto instanciado do tipo de objeto
+        item.setId(id);// pegando o id passado por parâmetro e passando para o objeto
+        serviceItem.deleteItem(item);// Chamando a função de deletar Tipo de usuário do service e
+        // passando o objeto com o id do objeto que quero excluir.
+        return true;
+    }
+
+
 
     // ---------------------------------------------------
     // ------------- Fornecedor -----------------------------
