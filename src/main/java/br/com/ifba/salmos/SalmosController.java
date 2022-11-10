@@ -133,7 +133,7 @@ public class SalmosController {
         return serviceRequisicoes.saveRequisicoes(requisicoess);
     }
 
-    @RequestMapping(path = "deletarRequisicoes", method = RequestMethod.GET) 
+    @RequestMapping(path = "/deletarRequisicoes", method = RequestMethod.GET) 
     public boolean deletarRequisicoes(Long id) {
         Requisicoes requisicoess = new Requisicoes();
         requisicoess.setId(id);
