@@ -10,11 +10,13 @@ import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 import br.com.ifba.salmos.setor.dao.IDaoSetor;
 import br.com.ifba.salmos.setor.model.Setor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Everton.
  */
+@Service
 public class ServiceSetor implements IServiceSetor {
 
     // CONSTANTES

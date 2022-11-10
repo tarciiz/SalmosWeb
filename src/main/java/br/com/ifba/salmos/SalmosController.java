@@ -12,7 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
 
+import br.com.ifba.salmos.fornecedor.model.Fornecedor;
+import br.com.ifba.salmos.fornecedor.service.IServiceFornecedor;
 import br.com.ifba.salmos.infrastructure.support.StringUtil;
+import br.com.ifba.salmos.item.model.Item;
+import br.com.ifba.salmos.item.service.IServiceItem;
+import br.com.ifba.salmos.requisicoes.service.IServiceRequisicoes;
+import br.com.ifba.salmos.setor.model.Setor;
+import br.com.ifba.salmos.setor.service.IServiceSetor;
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
@@ -105,10 +113,11 @@ public class SalmosController {
         TipoDeUsuario tusuario = new TipoDeUsuario();// criando um objeto instanciado do tipo de objeto
         tusuario.setId(id);// pegando o id passado por parâmetro e passando para o objeto
         serviceTipoUsuario.deleteTipoDeUsuario(tusuario);// Chamando a função de deletar Tipo de usuário do service e
-                                                         // passando o objeto com o id do objeto que quero excluir.
+    // passando o objeto com o id do objeto que quero excluir.
         return true;
     }
 
+<<<<<<< HEAD
 
 
 // ---------------------------------------------------
@@ -121,6 +130,86 @@ private IServiceTipoItem serviceTipoItem;
 @RequestMapping(path = "/tiposDeItem")
 public List<tipoDeItem> gettTipoDeItem() {
     return serviceTipoItem.getAlltipoDeItem();
+=======
+    // ---------------------------------------------------
+    // ------------- Requisições -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceRequisicoes serviceRequisicoes;
+
+    @RequestMapping(path = "/requisicao")
+    public List<Requisicoes> salvarRequisicoes() {
+        return (List<Requisicoes>) serviceRequisicoes.getAllRequisicoes();
+    }
+
+    @RequestMapping(path = "/salvarRequisicoes", method = RequestMethod.POST)
+    public Requisicoes salvarRequisicoes(@RequestBody String requisicoes) {
+        Requisicoes requisicoess = (Requisicoes) gson.fromJson(requisicoes, Requisicoes.class);
+        return serviceRequisicoes.saveRequisicoes(requisicoess);
+    }
+
+    @RequestMapping(path = "/deletarRequisicoes", method = RequestMethod.GET) 
+    public boolean deletarRequisicoes(Long id) {
+        Requisicoes requisicoess = new Requisicoes();
+        requisicoess.setId(id);
+        serviceRequisicoes.deleteRequisicoes(requisicoess);
+        return true;
+    }
+
+    // ---------------------------------------------------
+    // ------------- Item -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceItem serviceItem;
+
+    @RequestMapping(path = "/Item")
+    public List<Item> salvarItem() {
+        return (List<Item>) serviceItem.getAllItens();
+    }
+    
+    @RequestMapping(path = "/salvarItem", method = RequestMethod.POST)
+    public Item salvarItem(@RequestBody String itemm) {
+        Item item = (Item) gson.fromJson(itemm, Item.class);
+        return serviceItem.saveItem(item);
+    }
+
+    @RequestMapping(path = "deletarItem", method = RequestMethod.GET) // Criando o link para usar no frontend
+    public boolean deletarItem(Long id) {// Criando fução de excluir
+        Item item = new Item();// criando um objeto instanciado do tipo de objeto
+        item.setId(id);// pegando o id passado por parâmetro e passando para o objeto
+        serviceItem.deleteItem(item);// Chamando a função de deletar Tipo de usuário do service e
+        // passando o objeto com o id do objeto que quero excluir.
+        return true;
+    }
+
+
+
+    // ---------------------------------------------------
+    // ------------- Fornecedor -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceFornecedor serviceFornecedor;
+
+    @RequestMapping(path = "/fornecedor")
+    public List<Fornecedor> salvarFornecedor() {
+        return (List<Fornecedor>) serviceFornecedor.getAllFornecedor();
+    }
+
+    // ---------------------------------------------------
+    // ------------- Fornecedor -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceSetor serviceSetor;
+
+    @RequestMapping(path = "/setor")
+    public List<Setor> salvarSetor() {
+        return (List<Setor>) serviceSetor.getAllSetor();
+    }
+>>>>>>> 1e33c0e6ef18867bba0e3007382cc851332a324e
 }
 
 @RequestMapping(path = "/salvarTipoItem", method = RequestMethod.POST)

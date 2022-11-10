@@ -10,11 +10,13 @@ import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 import br.com.ifba.salmos.item.dao.IDaoItem;
 import br.com.ifba.salmos.item.model.Item;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author vitor
  */
+@Service
 public class ServiceItem implements IServiceItem {
 
     // Constantes para condições de erro
