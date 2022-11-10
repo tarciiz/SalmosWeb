@@ -5,9 +5,11 @@ import java.util.List;
 import br.com.ifba.salmos.tipodeitem.dao.IDaoTipoItem;
 import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 
-
+@Service
 public class ServiceTipoItem implements IServiceTipoItem{
 
     // mensagem de erro se o tipoDeItem for null;
