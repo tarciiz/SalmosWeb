@@ -241,4 +241,28 @@ public List<tipoDeItem> gettTipoDeItem() {
         serviceTipoItem.deletetipoDeItem(tipo);
         return true;
     }
+
+    //setor
+    @Autowired
+    //private IServiceSetor serviceSetor; //  repeated code 
+
+    //@RequestMapping(path = "/setor")
+    //public List<Setor> salvarSetor() {
+    //    return (List<Setor>) serviceSetor.getAllSetor();
+    //}
+
+    @RequestMapping(path = "/salvarSetor", method = RequestMethod.POST)
+    public Setor salvarSetor(@RequestBody String ssetor) {
+        Setor setor = (Setor) gson.fromJson(ssetor, Setor.class);
+        return serviceSetor.saveSetor(setor);
+    }
+
+    @RequestMapping(path = "deletarSetor", method = RequestMethod.GET) // Criando o link para usar no frontend
+    public boolean deletarSetor(Long id) {// Criando fução de excluir
+        Setor setor = new Setor();// criando um objeto instanciado do tipo de objeto
+        setor.setId(id);// pegando o id passado por parâmetro e passando para o objeto
+        serviceSetor.deleteSetor(setor);// Chamando a função de deletar Tipo de usuário do service e
+                                                        // passando o objeto com o id do objeto que quero excluir.
+        return true;
+    }
 }
