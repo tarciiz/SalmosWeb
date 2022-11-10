@@ -139,5 +139,27 @@ public class SalmosController {
         return true;
     }
 
-    
+    // ---------------------------------------------------
+    // ------------- Item -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceItem serviceItem;
+
+    @RequestMapping(path = "/item")
+    public List<Item> salvarItem() {
+        return (List<Item>) serviceItem.getAllItens();
+    }
+
+    // ---------------------------------------------------
+    // ------------- Fornecedor -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceFornecedor serviceFornecedor;
+
+    @RequestMapping(path = "/fornecedor")
+    public List<Fornecedor> salvarFornecedor() {
+        return (List<Fornecedor>) serviceFornecedor.getAllFornecedor();
+    }
 }
