@@ -5,6 +5,8 @@
 package br.com.ifba.salmos.requisicoes.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.item.model.Item;
+import br.com.ifba.salmos.setor.model.Setor;
 // import br.com.ifba.salmos.item.model.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,6 +17,8 @@ import lombok.ToString;
 // import java.util.Collection;
 // import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 // import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -31,8 +35,13 @@ import javax.persistence.Table;
 @ToString
 
 public class Requisicoes extends PersistenceEntity {
-    private String setor;
+    
+    @OneToOne
+    private Setor setor;
+
     private String usuarioRequisitante;
-    private String itemRequisitado;
+
+    @OneToOne
+    private Item itemRequisitado;
     private int quantidadeItensReq;
 }
