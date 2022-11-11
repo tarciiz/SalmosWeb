@@ -28,7 +28,7 @@ import lombok.ToString;
 
 public class Setor extends PersistenceEntity {
     // Atributos
-    private String nome;
+    private String name;
     private String descrição;
 
 }

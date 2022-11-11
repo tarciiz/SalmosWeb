@@ -40,8 +40,8 @@ public class Requisicoes extends PersistenceEntity {
     private Setor setor;
 
     private String usuarioRequisitante;
+    private int quantidadeItensReq;
 
     @OneToOne
     private Item itemRequisitado;
-    private int quantidadeItensReq;
 }
