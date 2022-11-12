@@ -1,12 +1,17 @@
+
+
+
+
 package br.com.ifba.salmos.tipodeitem.service;
 
 import java.util.List;
 
-import br.com.ifba.salmos.tipodeitem.dao.IDaoTipoItem;
-import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import br.com.ifba.salmos.tipodeitem.dao.IDaoTipoItem;
+import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 
 @Service
@@ -61,8 +66,7 @@ public class ServiceTipoItem implements IServiceTipoItem{
 
     @Override
     public List<tipoDeItem> getAlltipoDeItem() {
-        // TODO Auto-generated method stub
-        return null;
+        return (List<tipoDeItem>)this.daoTipoDeItem.findAll();
     }
     
 }

@@ -196,7 +196,7 @@ public class SalmosController {
     @Autowired
     private IServiceTipoItem serviceTipoItem;
 
-    @RequestMapping(path = "/tiposDeItem")
+    @RequestMapping(path = "/tipoDeItem")
         public List<tipoDeItem> gettTipoDeItem() {
         return serviceTipoItem.getAlltipoDeItem();
     }
@@ -206,6 +206,8 @@ public class SalmosController {
         tipoDeItem tipo = (tipoDeItem) gson.fromJson(tipodeitem, tipoDeItem.class);
         return serviceTipoItem.savetipoDeItem(tipo);
     }
+
+
 
     @RequestMapping(path = "/atualizarTipoItem", method = RequestMethod.POST)
     public tipoDeItem atualizarTipoDeItem(@RequestBody String tipodeitem) {
