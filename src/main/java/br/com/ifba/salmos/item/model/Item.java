@@ -41,6 +41,7 @@ public class Item extends PersistenceEntity {
     private Date dataValidade;
     private float valorItem;
     private boolean isPerecivel;
+    @OneToOne
     private tipoDeItem tipoItem;
 
 
