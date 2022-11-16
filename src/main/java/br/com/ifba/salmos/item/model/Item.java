@@ -4,13 +4,13 @@
  */
 package br.com.ifba.salmos.item.model;
 
-import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
-import br.com.ifba.salmos.requisicao.model.Requisicao;
-import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,9 +32,17 @@ import lombok.ToString;
 
 public class Item extends PersistenceEntity {
 
+    private int codItem;
+    private String nomeItem;
     private String Descricao;
     private int quantidade;
+    private int quantidadeMinima;
     private String fornecedor;
+    private Date dataValidade;
+    private float valorItem;
+    private boolean isPerecivel;
+    private tipoDeItem tipoItem;
+
 
     @OneToOne
     private Item item;
