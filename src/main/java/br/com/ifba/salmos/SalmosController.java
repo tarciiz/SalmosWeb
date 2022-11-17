@@ -18,15 +18,18 @@ import br.com.ifba.salmos.infrastructure.support.StringUtil;
 import br.com.ifba.salmos.item.model.Item;
 import br.com.ifba.salmos.item.service.IServiceItem;
 import br.com.ifba.salmos.requisicoes.service.IServiceRequisicoes;
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 import br.com.ifba.salmos.setor.model.Setor;
 import br.com.ifba.salmos.setor.service.IServiceSetor;
-import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
 import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
 import br.com.ifba.salmos.usuario.service.IServiceUsuario;
 import br.com.ifba.salmos.tipodeitem.service.IServiceTipoItem;
 import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
+import br.com.ifba.salmos.empenho.model.Empenho;
+import br.com.ifba.salmos.empenho.service.IServiceEmpenho;
+
 
 @RestController
 @RequestMapping(path = "/api/v1/app")
@@ -158,6 +161,7 @@ public class SalmosController {
     @RequestMapping(path = "/salvarItem", method = RequestMethod.POST)
     public Item salvarItem(@RequestBody String itemm) {
         Item item = (Item) gson.fromJson(itemm, Item.class);
+        System.out.println(item.toString());
         return serviceItem.saveItem(item);
     }
     
@@ -247,4 +251,33 @@ public class SalmosController {
         serviceSetor.deleteSetor(setor);
         return true;
     }
+
+    // ---------------------------------------------------
+    // ------------- Empenho -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceEmpenho serviceEmpenho; 
+
+    @RequestMapping(path = "/empenho")
+    public List<Empenho> listarEmpenho() {
+        return (List<Empenho>) serviceEmpenho.getAllEmpenho();
+    }
+
+    @RequestMapping(path = "/salvarEmpenho", method = RequestMethod.POST)
+    public Empenho salvarEMpenho(@RequestBody String empenho1) {
+        Empenho empenho = (Empenho) gson.fromJson(empenho1, Empenho.class);
+        return serviceEmpenho.saveEmpenho(empenho);
+    }
+
+    @RequestMapping(path = "deletarEmpenho", method = RequestMethod.GET)
+    public boolean deletarEmpenho(Long id) {
+        Empenho empenho = new Empenho();
+        empenho.setId(id);
+        serviceEmpenho.deleteEmpenho(empenho);
+        return true;
+    }
+
+    // ---------------------------------------------------
+    // ----------------------------------------------------
 }
