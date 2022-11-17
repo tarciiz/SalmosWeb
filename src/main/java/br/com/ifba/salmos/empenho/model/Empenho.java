@@ -33,8 +33,8 @@ import lombok.ToString;
 
 public class Empenho extends PersistenceEntity {
     private String itens;
-    private Date validadeEmpenho;
-    private float valorEmpenho;
+    private Date validade;
+    private float valor;
     private String pedido;
-    private String notaEmpenho;
+    private String nota;
 }
