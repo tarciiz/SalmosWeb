@@ -158,6 +158,7 @@ public class SalmosController {
     @RequestMapping(path = "/salvarItem", method = RequestMethod.POST)
     public Item salvarItem(@RequestBody String itemm) {
         Item item = (Item) gson.fromJson(itemm, Item.class);
+        System.out.println(item.toString());
         return serviceItem.saveItem(item);
     }
     

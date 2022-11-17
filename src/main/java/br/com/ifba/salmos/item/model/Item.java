@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.ifba.salmos.fornecedor.model.Fornecedor;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
 import java.util.Date;
@@ -37,14 +38,13 @@ public class Item extends PersistenceEntity {
     private String Descricao;
     private int quantidade;
     private int quantidadeMinima;
-    private String fornecedor;
+    @OneToOne
+    private Fornecedor fornecedor;
     private Date dataValidade;
     private float valorItem;
     private boolean isPerecivel;
+    @OneToOne
     private tipoDeItem tipoItem;
 
-
-    @OneToOne
-    private Item item;
 
 }
