@@ -29,5 +29,6 @@ import lombok.ToString;
 public class Fornecedor extends PersistenceEntity {
     private String email;
     private String telefone;
-
+    private String cnpj;
+    private String nomee;
 }

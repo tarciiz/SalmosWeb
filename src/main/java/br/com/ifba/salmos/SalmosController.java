@@ -193,6 +193,20 @@ public class SalmosController {
         return (List<Fornecedor>) serviceFornecedor.getAllFornecedor();
     }
 
+    @RequestMapping(path = "/salvarFornecedor", method = RequestMethod.POST)
+    public Fornecedor salvarFornecedor(@RequestBody String fornecedor) {
+        Fornecedor forn = (Fornecedor) gson.fromJson(fornecedor, Fornecedor.class);
+        return serviceFornecedor.saveFornecedor(forn);
+    }
+
+    @RequestMapping(path = "deletarFornecedor", method = RequestMethod.GET)
+    public boolean deletarFornecedor(Long id) {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setId(id);
+        serviceFornecedor.deleteFornecedor(fornecedor);
+        return true;
+    }
+
     // ---------------------------------------------------
     // ------------- TIPO DE ITEM -----------------------------
     // ---------------------------------------------------
