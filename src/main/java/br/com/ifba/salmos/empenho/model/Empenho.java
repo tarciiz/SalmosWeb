@@ -37,5 +37,4 @@ public class Empenho extends PersistenceEntity {
     private String valorEmpenho;
     private String pedido;
     private String notaEmpenho;
-    //foi
 }
