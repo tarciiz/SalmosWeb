@@ -14,4 +14,5 @@ public class TipoDeItem extends PersistenceEntity {
 
     // @ManyToOne
     // private List<Item> listaItens;
+    
 }
