@@ -10,13 +10,9 @@ import javax.persistence.Table;
 
 import br.com.ifba.salmos.fornecedor.model.Fornecedor;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
-import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
+import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
 import java.util.Date;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -25,12 +21,7 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "item")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
+@Data
 public class Item extends PersistenceEntity {
 
     private int codItem;
@@ -44,7 +35,7 @@ public class Item extends PersistenceEntity {
     private float valorItem;
     private boolean isPerecivel;
     @OneToOne
-    private tipoDeItem tipoItem;
+    private TipoDeItem tipoItem;
 
 
 }

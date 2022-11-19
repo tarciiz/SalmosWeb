@@ -1,6 +1,6 @@
 package br.com.ifba.salmos.tipodeitem.dao;
 
-import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
+import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author dudasss
  */
-public interface IDaoTipoItem extends JpaRepository<tipoDeItem, Long> {
+public interface IDaoTipoItem extends JpaRepository<TipoDeItem, Long> {
 
-    public abstract List<tipoDeItem> findByNome(String name);
+    public abstract List<TipoDeItem> findByNome(String name);
 }

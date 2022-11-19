@@ -7,11 +7,7 @@ package br.com.ifba.salmos.setor.model;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -20,12 +16,7 @@ import lombok.ToString;
 @Entity // Indicando que essa classe é uma das que vão se tornar persistivél no banco de
         // dados.
 @Table(name = "setor")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
+@Data
 public class Setor extends PersistenceEntity {
     // Atributos
     private String name;

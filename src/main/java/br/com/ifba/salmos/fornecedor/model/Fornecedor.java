@@ -7,11 +7,7 @@ package br.com.ifba.salmos.fornecedor.model;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -20,12 +16,7 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "fornecedor")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
+@Data
 public class Fornecedor extends PersistenceEntity {
     private String email;
     private String telefone;
