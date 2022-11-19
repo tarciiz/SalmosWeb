@@ -12,11 +12,7 @@ import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.Data;
 
 /**
  *
@@ -25,12 +21,7 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "empenho")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
+@Data
 public class Empenho extends PersistenceEntity {
     private String itens;
     private String validadeEmpenho;
