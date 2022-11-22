@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 import br.com.ifba.salmos.tipodeitem.dao.IDaoTipoItem;
-import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
+import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
 
 @Service
@@ -35,7 +35,7 @@ public class ServiceTipoItem implements IServiceTipoItem{
 
 
     @Override
-    public tipoDeItem savetipoDeItem(tipoDeItem tipoDeItem) {
+    public TipoDeItem savetipoDeItem(TipoDeItem tipoDeItem) {
         if(tipoDeItem == null){
             throw new BusinessException(tipoDeItem_NULL);
         }else{
@@ -44,7 +44,7 @@ public class ServiceTipoItem implements IServiceTipoItem{
     }
 
     @Override
-    public tipoDeItem updatetipoDeItem(tipoDeItem tipoDeItem) {
+    public TipoDeItem updatetipoDeItem(TipoDeItem tipoDeItem) {
         if(tipoDeItem == null){
             throw new BusinessException(tipoDeItem_NULL);
         }else if(daoTipoDeItem.findById(tipoDeItem.getId()) == null){
@@ -55,7 +55,7 @@ public class ServiceTipoItem implements IServiceTipoItem{
     }
 
     @Override
-    public void deletetipoDeItem(tipoDeItem tipoDeItem) {
+    public void deletetipoDeItem(TipoDeItem tipoDeItem) {
         if(tipoDeItem == null){
             throw new BusinessException(tipoDeItem_NULL);
         }else{
@@ -65,8 +65,8 @@ public class ServiceTipoItem implements IServiceTipoItem{
     }
 
     @Override
-    public List<tipoDeItem> getAlltipoDeItem() {
-        return (List<tipoDeItem>)this.daoTipoDeItem.findAll();
+    public List<TipoDeItem> getAlltipoDeItem() {
+        return (List<TipoDeItem>)this.daoTipoDeItem.findAll();
     }
     
 }

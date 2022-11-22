@@ -26,7 +26,7 @@ import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.salmos.usuario.model.Usuario;
 import br.com.ifba.salmos.usuario.service.IServiceUsuario;
 import br.com.ifba.salmos.tipodeitem.service.IServiceTipoItem;
-import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
+import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
 import br.com.ifba.salmos.empenho.model.Empenho;
 import br.com.ifba.salmos.empenho.service.IServiceEmpenho;
 
@@ -193,6 +193,20 @@ public class SalmosController {
         return (List<Fornecedor>) serviceFornecedor.getAllFornecedor();
     }
 
+    @RequestMapping(path = "/salvarFornecedor", method = RequestMethod.POST)
+    public Fornecedor salvarFornecedor(@RequestBody String fornecedor) {
+        Fornecedor forn = (Fornecedor) gson.fromJson(fornecedor, Fornecedor.class);
+        return serviceFornecedor.saveFornecedor(forn);
+    }
+
+    @RequestMapping(path = "deletarFornecedor", method = RequestMethod.GET)
+    public boolean deletarFornecedor(Long id) {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setId(id);
+        serviceFornecedor.deleteFornecedor(fornecedor);
+        return true;
+    }
+
     // ---------------------------------------------------
     // ------------- TIPO DE ITEM -----------------------------
     // ---------------------------------------------------
@@ -201,21 +215,21 @@ public class SalmosController {
     private IServiceTipoItem serviceTipoItem;
 
     @RequestMapping(path = "/tipoDeItem")
-        public List<tipoDeItem> gettTipoDeItem() {
+        public List<TipoDeItem> gettTipoDeItem() {
         return serviceTipoItem.getAlltipoDeItem();
     }
 
     @RequestMapping(path = "/salvarTipoItem", method = RequestMethod.POST)
-    public tipoDeItem salvarTipoDeItem(@RequestBody String tipodeitem) {
-        tipoDeItem tipo = (tipoDeItem) gson.fromJson(tipodeitem, tipoDeItem.class);
+    public TipoDeItem salvarTipoDeItem(@RequestBody String tipodeitem) {
+        TipoDeItem tipo = (TipoDeItem) gson.fromJson(tipodeitem, TipoDeItem.class);
         return serviceTipoItem.savetipoDeItem(tipo);
     }
 
 
 
     @RequestMapping(path = "/atualizarTipoItem", method = RequestMethod.POST)
-    public tipoDeItem atualizarTipoDeItem(@RequestBody String tipodeitem) {
-        tipoDeItem tipo = (tipoDeItem) gson.fromJson(tipodeitem, tipoDeItem.class);
+    public TipoDeItem atualizarTipoDeItem(@RequestBody String tipodeitem) {
+        TipoDeItem tipo = (TipoDeItem) gson.fromJson(tipodeitem, TipoDeItem.class);
         if (tipo.getId() == null)
             return null;
         return serviceTipoItem.savetipoDeItem(tipo);
@@ -223,7 +237,7 @@ public class SalmosController {
 
     @RequestMapping(path = "/deletarTipoItem", method = RequestMethod.GET)
     public boolean deletarTipoDeItem(Long id) {
-        tipoDeItem tipo = new tipoDeItem();
+        TipoDeItem tipo = new TipoDeItem();
         tipo.setId(id);
         serviceTipoItem.deletetipoDeItem(tipo);
         return true;

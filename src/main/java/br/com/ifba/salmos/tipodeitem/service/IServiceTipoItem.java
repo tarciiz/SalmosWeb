@@ -2,16 +2,16 @@ package br.com.ifba.salmos.tipodeitem.service;
 
 import java.util.List;
 
-import br.com.ifba.salmos.tipodeitem.model.tipoDeItem;
+import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
 
 
 public interface IServiceTipoItem {
 
-    public abstract tipoDeItem savetipoDeItem(tipoDeItem tipoDeItem);
+    public abstract TipoDeItem savetipoDeItem(TipoDeItem tipoDeItem);
 
-    public abstract tipoDeItem updatetipoDeItem(tipoDeItem tipoDeItem);
+    public abstract TipoDeItem updatetipoDeItem(TipoDeItem tipoDeItem);
 
-    public abstract void deletetipoDeItem(tipoDeItem tipoDeItem);
+    public abstract void deletetipoDeItem(TipoDeItem tipoDeItem);
 
-    public abstract List<tipoDeItem> getAlltipoDeItem();
+    public abstract List<TipoDeItem> getAlltipoDeItem();
 }
