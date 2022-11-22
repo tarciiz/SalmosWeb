@@ -24,8 +24,8 @@ import lombok.Data;
 @Data
 public class Empenho extends PersistenceEntity {
     private String itens;
-    private Date validadeEmpenho;
-    private float valorEmpenho;
+    private String validade;
+    private float valor;
     private String pedido;
     private String nota;
 }
