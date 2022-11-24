@@ -21,6 +21,6 @@ import lombok.Data;
 public class PersistenceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nome;
 }
