@@ -8,8 +8,6 @@ package br.com.ifba.salmos.empenho.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import lombok.Data;
