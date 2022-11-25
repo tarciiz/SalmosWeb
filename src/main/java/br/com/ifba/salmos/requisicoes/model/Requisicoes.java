@@ -22,6 +22,8 @@ import javax.persistence.OneToOne;
 // import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ManyToAny;
+
 /**
  *
  * @author Vitor
@@ -44,6 +46,6 @@ public class Requisicoes extends PersistenceEntity {
     private int quantidadeItensReq;
 
 
-    @OneToOne
+    @ManyToMany
     private Item itemRequisitado;
 }
