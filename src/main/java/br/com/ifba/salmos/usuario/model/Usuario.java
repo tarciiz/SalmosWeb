@@ -10,6 +10,7 @@ import javax.persistence.Table;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
+import br.com.ifba.salmos.pessoa.model.Pessoa;
 import lombok.Data;
 
 /**
@@ -34,4 +35,6 @@ public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
     private String email;
+    @OneToOne
+    private Pessoa pessoa;
 }

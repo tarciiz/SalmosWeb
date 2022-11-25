@@ -10,8 +10,6 @@ import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.item.model.Item;
 import br.com.ifba.salmos.pedido.model.Pedido;
 
-import java.sql.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;

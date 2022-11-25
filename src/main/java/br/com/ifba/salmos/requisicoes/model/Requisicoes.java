@@ -7,17 +7,10 @@ package br.com.ifba.salmos.requisicoes.model;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.item.model.Item;
 import br.com.ifba.salmos.setor.model.Setor;
-// import br.com.ifba.salmos.item.model.Item;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import lombok.Data;
 // import java.util.Collection;
 // import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 // import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -30,12 +23,7 @@ import org.hibernate.annotations.ManyToAny;
  */
 @Entity
 @Table(name = "requisicoes")
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-
+@Data
 public class Requisicoes extends PersistenceEntity {
     
     @OneToOne
