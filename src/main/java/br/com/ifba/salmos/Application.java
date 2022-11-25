@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @SpringBootApplication
-public class SalmosApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SalmosApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

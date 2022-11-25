@@ -1,0 +1,297 @@
+package br.com.ifba.salmos;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
+
+import br.com.ifba.salmos.fornecedor.model.Fornecedor;
+import br.com.ifba.salmos.fornecedor.service.IServiceFornecedor;
+import br.com.ifba.salmos.infrastructure.support.StringUtil;
+import br.com.ifba.salmos.item.model.Item;
+import br.com.ifba.salmos.item.service.IServiceItem;
+import br.com.ifba.salmos.requisicoes.service.IServiceRequisicoes;
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+import br.com.ifba.salmos.setor.model.Setor;
+import br.com.ifba.salmos.setor.service.IServiceSetor;
+import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
+import br.com.ifba.salmos.tiposdeusuario.service.IServiceTipoDeUsuario;
+import br.com.ifba.salmos.usuario.model.Usuario;
+import br.com.ifba.salmos.usuario.service.IServiceUsuario;
+import br.com.ifba.salmos.tipodeitem.service.IServiceTipoItem;
+import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
+import br.com.ifba.salmos.empenho.model.Empenho;
+import br.com.ifba.salmos.empenho.service.IServiceEmpenho;
+
+/*=========================ATENÇÃO=========================
+ * As classes a seguir estão organizadas em ordem alfabética assim como seus respectivos métodos. Caso for fazer alguma alteração, continue com a organização!
+ *  
+*/
+@RestController
+@RequestMapping(path = "/api/v1/app")
+public class Controller {
+    Gson gson = new Gson();
+
+    @RequestMapping(path = "/hello")
+    public String helloWorld(@RequestParam String name) {
+        String usuario = "{senha:'" + name + "'}";
+        Usuario user = (Usuario) gson.fromJson(usuario, Usuario.class);
+        return "Hello " + user.getSenha() + "!";
+    }
+
+    // ---------------------------------------------------
+    // ------------- Empenho -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceEmpenho serviceEmpenho; 
+
+    @RequestMapping(path = "deletarEmpenho", method = RequestMethod.GET)
+    public boolean deletarEmpenho(Long id) {
+        Empenho empenho = new Empenho();
+        empenho.setId(id);
+        serviceEmpenho.deleteEmpenho(empenho);
+        return true;
+    }
+
+    @RequestMapping(path = "/empenho")
+    public List<Empenho> listarEmpenho() {
+        return (List<Empenho>) serviceEmpenho.getAllEmpenho();
+    }
+
+    @RequestMapping(path = "/salvarEmpenho", method = RequestMethod.POST)
+    public Empenho salvarEMpenho(@RequestBody String empenho1) {
+        Empenho empenho = (Empenho) gson.fromJson(empenho1, Empenho.class);
+        return serviceEmpenho.saveEmpenho(empenho);
+    }
+
+    // ---------------------------------------------------
+    // ------------- Fornecedor -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceFornecedor serviceFornecedor;
+
+    @RequestMapping(path = "deletarFornecedor", method = RequestMethod.GET)
+    public boolean deletarFornecedor(Long id) {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setId(id);
+        serviceFornecedor.deleteFornecedor(fornecedor);
+        return true;
+    }
+
+    @RequestMapping(path = "/fornecedor")
+    public List<Fornecedor> salvarFornecedor() {
+        return (List<Fornecedor>) serviceFornecedor.getAllFornecedor();
+    }
+
+    @RequestMapping(path = "/salvarFornecedor", method = RequestMethod.POST)
+    public Fornecedor salvarFornecedor(@RequestBody String fornecedor) {
+        Fornecedor forn = (Fornecedor) gson.fromJson(fornecedor, Fornecedor.class);
+        return serviceFornecedor.saveFornecedor(forn);
+    }
+
+// ---------------------------------------------------
+    // ------------- Item -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceItem serviceItem;
+
+    @RequestMapping(path = "/atualizarItem", method = RequestMethod.POST)
+    public Item atualizarItem(@RequestBody String item) {
+        Item itemm = (Item) gson.fromJson(item, Item.class);
+        if (itemm.getId() == null)
+            return null;
+        return serviceItem.saveItem(itemm);
+    }
+
+    @RequestMapping(path = "deletarItem", method = RequestMethod.GET) 
+    public boolean deletarItem(Long id) {
+        Item item = new Item();
+        item.setId(id);
+        serviceItem.deleteItem(item);
+        return true;
+    }
+
+     @RequestMapping(path = "/Item")
+    public List<Item> salvarItem() {
+        return (List<Item>) serviceItem.getAllItens();
+    }
+    
+    @RequestMapping(path = "/salvarItem", method = RequestMethod.POST)
+    public Item salvarItem(@RequestBody String itemm) {
+        Item item = (Item) gson.fromJson(itemm, Item.class);
+        System.out.println(item.toString());
+        return serviceItem.saveItem(item);
+    }
+
+    
+    // ---------------------------------------------------
+    // ------------- Requisições -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceRequisicoes serviceRequisicoes;
+
+    @RequestMapping(path = "/deletarRequisicoes", method = RequestMethod.GET) 
+    public boolean deletarRequisicoes(Long id) {
+        Requisicoes requisicoess = new Requisicoes();
+        requisicoess.setId(id);
+        serviceRequisicoes.deleteRequisicoes(requisicoess);
+        return true;
+    }
+
+    @RequestMapping(path = "/requisicao")
+    public List<Requisicoes> salvarRequisicoes() {
+        return (List<Requisicoes>) serviceRequisicoes.getAllRequisicoes();
+    }
+
+    @RequestMapping(path = "/salvarRequisicoes", method = RequestMethod.POST)
+    public Requisicoes salvarRequisicoes(@RequestBody String requisicoes) {
+        Requisicoes requisicoess = (Requisicoes) gson.fromJson(requisicoes, Requisicoes.class);
+        return serviceRequisicoes.saveRequisicoes(requisicoess);
+    }
+    
+    // ---------------------------------------------------
+    // ------------- Setor -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceSetor serviceSetor; 
+
+    @RequestMapping(path = "deletarSetor", method = RequestMethod.GET)
+    public boolean deletarSetor(Long id) {
+        Setor setor = new Setor();
+        setor.setId(id);
+        serviceSetor.deleteSetor(setor);
+        return true;
+    }
+
+    @RequestMapping(path = "/setor")
+    public List<Setor> salvarSetor() {
+        return (List<Setor>) serviceSetor.getAllSetor();
+    }
+
+    @RequestMapping(path = "/salvarSetor", method = RequestMethod.POST)
+    public Setor salvarSetor(@RequestBody String ssetor) {
+        Setor setor = (Setor) gson.fromJson(ssetor, Setor.class);
+        return serviceSetor.saveSetor(setor);
+    }
+
+    // ---------------------------------------------------
+    // ------------- TIPO DE ITEM -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceTipoItem serviceTipoItem;
+
+    @RequestMapping(path = "/atualizarTipoItem", method = RequestMethod.POST)
+    public TipoDeItem atualizarTipoDeItem(@RequestBody String tipodeitem) {
+        TipoDeItem tipo = (TipoDeItem) gson.fromJson(tipodeitem, TipoDeItem.class);
+        if (tipo.getId() == null)
+            return null;
+        return serviceTipoItem.savetipoDeItem(tipo);
+    }
+
+    @RequestMapping(path = "/deletarTipoItem", method = RequestMethod.GET)
+    public boolean deletarTipoDeItem(Long id) {
+        TipoDeItem tipo = new TipoDeItem();
+        tipo.setId(id);
+        serviceTipoItem.deletetipoDeItem(tipo);
+        return true;
+    }
+    @RequestMapping(path = "/tipoDeItem")
+        public List<TipoDeItem> gettTipoDeItem() {
+        return serviceTipoItem.getAlltipoDeItem();
+    }
+
+    @RequestMapping(path = "/salvarTipoItem", method = RequestMethod.POST)
+    public TipoDeItem salvarTipoDeItem(@RequestBody String tipodeitem) {
+        TipoDeItem tipo = (TipoDeItem) gson.fromJson(tipodeitem, TipoDeItem.class);
+        return serviceTipoItem.savetipoDeItem(tipo);
+    }
+
+    // ---------------------------------------------------
+    // ------------- TIPO USUARIO -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceTipoDeUsuario serviceTipoUsuario;
+
+    @RequestMapping(path = "deletarTipoDeUsuario", method = RequestMethod.GET) 
+    public boolean deletarTipoDeUsuario(Long id) {
+        TipoDeUsuario tusuario = new TipoDeUsuario(); 
+        tusuario.setId(id);
+        serviceTipoUsuario.deleteTipoDeUsuario(tusuario);
+        return true;
+    }
+
+    @RequestMapping(path = "/salvarTipoDeUsuario", method = RequestMethod.POST)
+      public TipoDeUsuario salvarTipoDeUsuario(@RequestBody String tipodeusuario) {
+        TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario, TipoDeUsuario.class);
+        return serviceTipoUsuario.saveTipoDeUsuario(tusuario);
+    }
+
+    @RequestMapping(path = "/tipodeusuario")
+    public List<TipoDeUsuario> salvarTipoDeUsuario() {
+        return (List<TipoDeUsuario>) serviceTipoUsuario.getAllTipoDeUsuario();
+    }
+    
+    // ---------------------------------------------------
+    // ------------- USUARIO -----------------------------
+    // ---------------------------------------------------
+    @Autowired
+    private IServiceUsuario serviceUsuario;
+
+    @RequestMapping(path = "/atualizarUsuario", method = RequestMethod.POST)
+    public Usuario atualizarUsuario(@RequestBody String usuario) {
+        Usuario user = (Usuario) gson.fromJson(usuario, Usuario.class);
+        if (user.getId() == null)
+            return null;
+        return serviceUsuario.saveUsuario(user);
+    }
+
+    @RequestMapping(path = "/deletarUsuario", method = RequestMethod.GET)
+    public boolean deletarUsuario(Long id) {
+        Usuario user = new Usuario();
+        user.setId(id);
+        serviceUsuario.deleteUsuario(user);
+        return true;
+    }
+
+    @RequestMapping(path = "/login")
+    public Usuario login(String login, String senha) {
+        Usuario user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, senha);
+
+        if (user == null) {
+            user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, StringUtil.toMD5(senha));
+        }
+
+        return user;
+    }
+
+    @RequestMapping(path = "/salvarUsuario", method = RequestMethod.POST)
+    public Usuario salvarUsuario(@RequestBody String usuario) {
+        Usuario user = (Usuario) gson.fromJson(usuario, Usuario.class);
+        return serviceUsuario.saveUsuario(user);
+    }
+
+    @RequestMapping(path = "/usuarios")
+    public List<Usuario> getUsuarios() {
+        return serviceUsuario.getAllUsuarios();
+    }
+
+    @RequestMapping(path = "/usuario/{id}")
+    public Usuario getUsuario(@PathVariable Long id) {
+        System.out.println("Id " + id);
+        return (Usuario) this.serviceUsuario.findById(id);
+    }
+    }
