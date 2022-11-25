@@ -24,16 +24,18 @@ import lombok.Data;
 @Data
 public class Item extends PersistenceEntity {
 
-    private int codItem;
-    private String nomeItem;
-    private String Descricao;
+    private String codigoItem;
+    private String nome;
+    private String descricao;
     private int quantidade;
-    private int quantidadeMinima;
+    private int quantidadeMinima;    
+    private Date dataValidade;
+    private double valorItem;
+    private boolean perecivel;
+    
     @OneToOne
     private Fornecedor fornecedor;
-    private Date dataValidade;
-    private float valorItem;
-    private boolean isPerecivel;
+
     @OneToOne
     private TipoDeItem tipoItem;
 
