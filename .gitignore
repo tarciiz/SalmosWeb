@@ -40,3 +40,4 @@ src/main/java/META-INF/persistence.xml
 src/main/resources/templates/
 src/main/resources/templates/application.properties
 src/main/resources/application.properties
+pom.xml
