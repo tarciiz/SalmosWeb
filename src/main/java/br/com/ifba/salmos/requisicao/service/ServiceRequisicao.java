@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.salmos.requisicoes.service;
+package br.com.ifba.salmos.requisicao.service;
 
 import java.util.List;
 
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-import br.com.ifba.salmos.requisicoes.dao.IDaoRequisicoes;
-import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+import br.com.ifba.salmos.requisicao.dao.IDaoRequisicao;
+import br.com.ifba.salmos.requisicao.model.Requisicao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  * @author Vitor
  */
 @Service
-public class ServiceRequisicoes implements IServiceRequisicoes {
+public class ServiceRequisicao implements IServiceRequisicao {
 
     // CONSTANTES
 
@@ -36,42 +36,42 @@ public class ServiceRequisicoes implements IServiceRequisicoes {
 
     // OBJETO
     @Autowired
-    private IDaoRequisicoes daoRequisicoes;
+    private IDaoRequisicao daoRequisicao;
 
     @Override
-    public Requisicoes saveRequisicoes(Requisicoes requisicoes) {
-        if (requisicoes == null) {
+    public Requisicao saveRequisicao(Requisicao requisicao) {
+        if (requisicao == null) {
             throw new BusinessException(REQUISICAO_NULL);
         } else {
-            return daoRequisicoes.save(requisicoes);
+            return daoRequisicao.save(requisicao);
         }
     }
 
     @Override
-    public Requisicoes updateRequisicoes(Requisicoes requisicoes) {
-        if (requisicoes == null) {
+    public Requisicao updateRequisicao(Requisicao requisicao) {
+        if (requisicao == null) {
             throw new BusinessException(REQUISICAO_NULL);
-        } else if (daoRequisicoes.findById(requisicoes.getId()) == null) {
+        } else if (daoRequisicao.findById(requisicao.getId()) == null) {
             throw new BusinessException(REQUISICAO_NAO_EXISTE);
         } else {
-            return daoRequisicoes.save(requisicoes);
+            return daoRequisicao.save(requisicao);
         }
     }
 
     @Override
-    public void deleteRequisicoes(Requisicoes requisicoes) {
-        if (requisicoes == null) {
+    public void deleteRequisicao(Requisicao requisicao) {
+        if (requisicao == null) {
             throw new BusinessException(REQUISICAO_NULL);
         } else {
-            this.daoRequisicoes.delete(requisicoes);
+            this.daoRequisicao.delete(requisicao);
             return;
         }
 
     }
 
     @Override
-    public List<Requisicoes> getAllRequisicoes() {
-        return this.daoRequisicoes.findAll();
+    public List<Requisicao> getAllRequisicao() {
+        return this.daoRequisicao.findAll();
     }
 
 }

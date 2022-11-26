@@ -5,7 +5,7 @@
 package br.com.ifba.salmos.setor.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
-import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+import br.com.ifba.salmos.requisicao.model.Requisicao;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -30,6 +30,6 @@ public class Setor extends PersistenceEntity {
     private String descricao;
 
     @ManyToOne
-    private List<Requisicoes> requisicoes;
+    private List<Requisicao> requisicoes;
 
 }

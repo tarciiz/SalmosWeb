@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
-import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+import br.com.ifba.salmos.requisicao.model.Requisicao;
 import br.com.ifba.salmos.usuario.model.Usuario;
 import lombok.Data;
 
@@ -35,7 +35,7 @@ public class Pessoa extends PersistenceEntity {
     private Date dataDeNascimento;
 
     @ManyToOne
-    private List<Requisicoes> requisicoes;
+    private List<Requisicao> requisicoes;
 
     @OneToOne
     private Usuario usuario;

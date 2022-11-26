@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.salmos.requisicoes.model;
+package br.com.ifba.salmos.requisicao.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.item.model.Item;
@@ -25,7 +25,7 @@ import java.util.List;
 @Entity
 @Table(name = "requisicao")
 @Data
-public class Requisicoes extends PersistenceEntity {
+public class Requisicao extends PersistenceEntity {
     private String codigoSaida;
     private boolean status;
 

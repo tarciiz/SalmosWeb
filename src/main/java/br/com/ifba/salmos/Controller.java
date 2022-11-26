@@ -17,8 +17,10 @@ import br.com.ifba.salmos.fornecedor.service.IServiceFornecedor;
 import br.com.ifba.salmos.infrastructure.support.StringUtil;
 import br.com.ifba.salmos.item.model.Item;
 import br.com.ifba.salmos.item.service.IServiceItem;
-import br.com.ifba.salmos.requisicoes.service.IServiceRequisicoes;
-import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+import br.com.ifba.salmos.pedido.model.Pedido;
+import br.com.ifba.salmos.pedido.service.IServicePedido;
+import br.com.ifba.salmos.requisicao.model.Requisicao;
+import br.com.ifba.salmos.requisicao.service.IServiceRequisicao;
 import br.com.ifba.salmos.setor.model.Setor;
 import br.com.ifba.salmos.setor.service.IServiceSetor;
 import br.com.ifba.salmos.tiposdeusuario.model.TipoDeUsuario;
@@ -46,9 +48,9 @@ public class Controller {
         return "Hello " + user.getSenha() + "!";
     }
 
-    // ---------------------------------------------------
-    // ------------- Empenho -----------------------------
-    // ---------------------------------------------------
+    // ------------------------------------------------------------------------------
+    // -------------------------------   Empenho   ----------------------------------
+    // ------------------------------------------------------------------------------
 
     @Autowired
     private IServiceEmpenho serviceEmpenho; 
@@ -67,7 +69,7 @@ public class Controller {
     }
 
     @RequestMapping(path = "/salvarEmpenho", method = RequestMethod.POST)
-    public Empenho salvarEMpenho(@RequestBody String empenho1) {
+    public Empenho salvarEmpenho(@RequestBody String empenho1) {
         Empenho empenho = (Empenho) gson.fromJson(empenho1, Empenho.class);
         return serviceEmpenho.saveEmpenho(empenho);
     }
@@ -98,7 +100,7 @@ public class Controller {
         return serviceFornecedor.saveFornecedor(forn);
     }
 
-// ---------------------------------------------------
+    // ---------------------------------------------------
     // ------------- Item -----------------------------
     // ---------------------------------------------------
 
@@ -133,31 +135,57 @@ public class Controller {
         return serviceItem.saveItem(item);
     }
 
+    // ------------------------------------------------------------------------------
+    // -------------------------------   Pedido   ----------------------------------
+    // ------------------------------------------------------------------------------
+
+    @Autowired
+    private IServicePedido servicePedido; 
+
+    @RequestMapping(path = "deletarPedido", method = RequestMethod.GET)
+    public boolean deletarPedido(Long id) {
+        Pedido pedido = new Pedido();
+        pedido.setId(id);
+        servicePedido.deletePedido(pedido);
+        return true;
+    }
+
+    @RequestMapping(path = "/pedido")
+    public List<Pedido> listarPedido() {
+        return (List<Pedido>) servicePedido.getAllPedido();
+    }
+
+    @RequestMapping(path = "/salvarPedido", method = RequestMethod.POST)
+    public Pedido salvarPedido(@RequestBody String empenho1) {
+        Pedido pedido = (Pedido) gson.fromJson(empenho1, Pedido.class);
+        return servicePedido.savePedido(pedido);
+    }
+    
     
     // ---------------------------------------------------
-    // ------------- Requisições -----------------------------
+    // ------------- Requisição -----------------------------
     // ---------------------------------------------------
 
     @Autowired
-    private IServiceRequisicoes serviceRequisicoes;
+    private IServiceRequisicao serviceRequisicao;
 
-    @RequestMapping(path = "/deletarRequisicoes", method = RequestMethod.GET) 
-    public boolean deletarRequisicoes(Long id) {
-        Requisicoes requisicoess = new Requisicoes();
-        requisicoess.setId(id);
-        serviceRequisicoes.deleteRequisicoes(requisicoess);
+    @RequestMapping(path = "/deletarRequisicao", method = RequestMethod.GET) 
+    public boolean deletarRequisicao(Long id) {
+        Requisicao requisicaoo = new Requisicao();
+        requisicaoo.setId(id);
+        serviceRequisicao.deleteRequisicao(requisicaoo);
         return true;
     }
 
     @RequestMapping(path = "/requisicao")
-    public List<Requisicoes> salvarRequisicoes() {
-        return (List<Requisicoes>) serviceRequisicoes.getAllRequisicoes();
+    public List<Requisicao> salvarRequisicao() {
+        return (List<Requisicao>) serviceRequisicao.getAllRequisicao();
     }
 
-    @RequestMapping(path = "/salvarRequisicoes", method = RequestMethod.POST)
-    public Requisicoes salvarRequisicoes(@RequestBody String requisicoes) {
-        Requisicoes requisicoess = (Requisicoes) gson.fromJson(requisicoes, Requisicoes.class);
-        return serviceRequisicoes.saveRequisicoes(requisicoess);
+    @RequestMapping(path = "/salvarRequisicao", method = RequestMethod.POST)
+    public Requisicao salvarRequisicao(@RequestBody String requisicoes) {
+        Requisicao requisicaoo = (Requisicao) gson.fromJson(requisicoes, Requisicao.class);
+        return serviceRequisicao.saveRequisicao(requisicaoo);
     }
     
     // ---------------------------------------------------

@@ -16,7 +16,7 @@ import br.com.ifba.salmos.empenho.model.Empenho;
 import br.com.ifba.salmos.fornecedor.model.Fornecedor;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
 import br.com.ifba.salmos.pedido.model.Pedido;
-import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+import br.com.ifba.salmos.requisicao.model.Requisicao;
 import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
 
 import java.util.Date;
@@ -51,7 +51,7 @@ public class Item extends PersistenceEntity {
     private List<Empenho> empenhos;
 
     @ManyToMany(mappedBy = "itens")
-    private List<Requisicoes> requisicoes;
+    private List<Requisicao> requisicoes;
 
     @ManyToMany(mappedBy = "itens")
     private List<Pedido> pedidos;
