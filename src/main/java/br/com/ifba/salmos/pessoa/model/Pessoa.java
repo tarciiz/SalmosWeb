@@ -5,10 +5,17 @@
  */
 package br.com.ifba.salmos.pessoa.model;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+import br.com.ifba.salmos.usuario.model.Usuario;
 import lombok.Data;
 
 /**
@@ -21,13 +28,17 @@ import lombok.Data;
 @Data
 
 public class Pessoa extends PersistenceEntity {
-
-
     private String nome;
     private String telefone;
     private String email;
     private String cpf;
-    private String dataDeNascimento;
+    private Date dataDeNascimento;
+
+    @ManyToOne
+    private List<Requisicoes> requisicoes;
+
+    @OneToOne
+    private Usuario usuario;
 }
 
 

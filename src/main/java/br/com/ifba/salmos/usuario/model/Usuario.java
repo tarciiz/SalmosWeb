@@ -6,6 +6,7 @@ package br.com.ifba.salmos.usuario.model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
@@ -21,20 +22,15 @@ import lombok.Data;
 @Entity
 @Table(name = "usuario")
 @Data
-
 public class Usuario extends PersistenceEntity {
-
-    @OneToOne
-    private TipoDeUsuario tipodeusuario;
-
-    /*
-     * @OneToOne(cascade = CascadeType.ALL)
-     * private TipoDeUsuario tipodeusuarios;
-     */
-
     private String login;
     private String senha;
     private String email;
-    @OneToOne
+
+    @OneToOne(mappedBy = "usuario")
     private Pessoa pessoa;
+
+    @OneToMany(mappedBy = "usuarios")
+    private TipoDeUsuario tipodeusuario;
 }
+

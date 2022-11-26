@@ -5,7 +5,12 @@
 package br.com.ifba.salmos.tiposdeusuario.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.usuario.model.Usuario;
+
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 
@@ -17,10 +22,10 @@ import lombok.Data;
 @Entity
 @Table(name = "tipodeusuario")
 @Data
-
 public class TipoDeUsuario extends PersistenceEntity {
-
+    private String nome;
     private String descricao;
-    private int nivelAcesso;
-
+    
+    @ManyToOne
+    private List<Usuario> usuarios;
 }

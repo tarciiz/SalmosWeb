@@ -4,12 +4,11 @@
  */
 package br.com.ifba.salmos.requisicoes.service;
 
-// import br.com.ifba.salmos.requisicao.model.Requisicao;
-import br.com.ifba.salmos.requisicoes.model.Requisicoes;
-
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 
 /**
  *

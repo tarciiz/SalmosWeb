@@ -5,9 +5,12 @@
 package br.com.ifba.salmos.fornecedor.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.item.model.Item;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import java.util.List;
 
 /**
  *
@@ -18,8 +21,12 @@ import lombok.Data;
 @Table(name = "fornecedor")
 @Data
 public class Fornecedor extends PersistenceEntity {
+    private String nome;
     private String email;
-    private String telefone;
     private String cnpj;
-    private String nomee;
+    private String telefone;
+
+    @ManyToOne
+    private List<Item> itens;
+
 }

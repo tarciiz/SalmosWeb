@@ -5,13 +5,22 @@
 package br.com.ifba.salmos.item.model;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+//import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+//import org.hibernate.annotations.ManyToAny;
+
+import br.com.ifba.salmos.empenho.model.Empenho;
 import br.com.ifba.salmos.fornecedor.model.Fornecedor;
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.pedido.model.Pedido;
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 import br.com.ifba.salmos.tipodeitem.model.TipoDeItem;
+
 import java.util.Date;
+import java.util.List;
 import lombok.Data;
 
 /**
@@ -23,7 +32,6 @@ import lombok.Data;
 @Table(name = "item")
 @Data
 public class Item extends PersistenceEntity {
-
     private String codigoItem;
     private String nome;
     private String descricao;
@@ -33,11 +41,19 @@ public class Item extends PersistenceEntity {
     private double valorItem;
     private boolean perecivel;
     
-    @OneToOne
+    @OneToMany(mappedBy = "itens")
     private Fornecedor fornecedor;
 
-    @OneToOne
+    @OneToMany(mappedBy = "itens")
     private TipoDeItem tipoItem;
 
+    @ManyToMany(mappedBy = "itens")
+    private List<Empenho> empenhos;
+
+    @ManyToMany(mappedBy = "itens")
+    private List<Requisicoes> requisicoes;
+
+    @ManyToMany(mappedBy = "itens")
+    private List<Pedido> pedidos;
 
 }

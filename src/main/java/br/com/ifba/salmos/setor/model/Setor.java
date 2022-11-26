@@ -5,21 +5,31 @@
 package br.com.ifba.salmos.setor.model;
 
 import br.com.ifba.salmos.infrastructure.model.PersistenceEntity;
+import br.com.ifba.salmos.requisicoes.model.Requisicoes;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import java.util.List;
+
 
 /**
  *
  * @author Everton.
  */
-@Entity // Indicando que essa classe é uma das que vão se tornar persistivél no banco de
+@Entity // Indicando que essa classe é uma das que vão se tornar persistível no banco de
         // dados.
+
 @Table(name = "setor")
 @Data
+
 public class Setor extends PersistenceEntity {
     // Atributos
-    private String name;
-    private String descrição;
+    private String nome;
+    private String descricao;
+
+    @ManyToOne
+    private List<Requisicoes> requisicoes;
 
 }

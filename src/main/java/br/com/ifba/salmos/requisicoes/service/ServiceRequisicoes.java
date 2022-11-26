@@ -7,8 +7,6 @@ package br.com.ifba.salmos.requisicoes.service;
 import java.util.List;
 
 import br.com.ifba.salmos.infrastructure.exception.BusinessException;
-// import br.com.ifba.salmos.requisicao.dao.IDaoRequisicao;
-// import br.com.ifba.salmos.requisicao.model.Requisicao;
 import br.com.ifba.salmos.requisicoes.dao.IDaoRequisicoes;
 import br.com.ifba.salmos.requisicoes.model.Requisicoes;
 
