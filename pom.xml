@@ -16,7 +16,7 @@
 	
 	<properties>
 		<java.version>17</java.version>
-		<start-class>br.com.ifba.salmos.SalmosApplication</start-class>
+		<start-class>br.com.ifba.Application</start-class>
 	</properties>
 	
 	<dependencies>
@@ -87,7 +87,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-                    <mainClass>br.com.ifba.salmos.SalmosApplication</mainClass>
+                    <mainClass>br.com.ifba.Application</mainClass>
                 </configuration>
 			</plugin>
 		</plugins>
