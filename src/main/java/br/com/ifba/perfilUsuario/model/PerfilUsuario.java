@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.tiposdeusuario.model;
+package br.com.ifba.perfilUsuario.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.usuario.model.Usuario;
@@ -10,9 +10,10 @@ import br.com.ifba.usuario.model.Usuario;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -20,12 +21,13 @@ import lombok.Data;
  *         editted by tarciiz
  */
 @Entity
-@Table(name = "tipodeusuario")
+@Table(name = "perfilusuario")
 @Data
-public class TipoDeUsuario extends PersistenceEntity {
+@EqualsAndHashCode(callSuper = false)
+public class PerfilUsuario extends PersistenceEntity {
     private String nome;
     private String descricao;
     
-    @ManyToOne
+    @OneToMany(mappedBy = "perfil")
     private List<Usuario> usuarios;
 }

@@ -5,14 +5,16 @@
 package br.com.ifba.usuario.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.pessoa.model.Pessoa;
-import br.com.ifba.tiposdeusuario.model.TipoDeUsuario;
+import br.com.ifba.perfilUsuario.model.PerfilUsuario;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -22,6 +24,7 @@ import lombok.Data;
 @Entity
 @Table(name = "usuario")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
@@ -30,7 +33,8 @@ public class Usuario extends PersistenceEntity {
     @OneToOne(mappedBy = "usuario")
     private Pessoa pessoa;
 
-    @OneToMany(mappedBy = "usuarios")
-    private TipoDeUsuario tipodeusuario;
+    @ManyToOne
+    @JoinColumn(name = "perfilUsuario_id")
+    private PerfilUsuario perfil;
 }
 

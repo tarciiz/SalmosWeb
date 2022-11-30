@@ -27,6 +27,6 @@ public interface IServicePessoa {
 
     public Pessoa findById(Long id);
 
-    public Pessoa findByLoginOrEmailAndSenha(String login, String email, String senha);
+   // public Pessoa findByLoginOrEmailAndSenha(String login, String email, String senha);
 
 }

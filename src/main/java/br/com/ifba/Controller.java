@@ -21,14 +21,14 @@ import br.com.ifba.item.model.Item;
 import br.com.ifba.item.service.IServiceItem;
 import br.com.ifba.pedido.model.Pedido;
 import br.com.ifba.pedido.service.IServicePedido;
+import br.com.ifba.perfilUsuario.model.PerfilUsuario;
+import br.com.ifba.perfilUsuario.service.IServicePerfilUsuario;
 import br.com.ifba.requisicao.model.Requisicao;
 import br.com.ifba.requisicao.service.IServiceRequisicao;
 import br.com.ifba.setor.model.Setor;
 import br.com.ifba.setor.service.IServiceSetor;
 import br.com.ifba.tipodeitem.model.TipoDeItem;
 import br.com.ifba.tipodeitem.service.IServiceTipoItem;
-import br.com.ifba.tiposdeusuario.model.TipoDeUsuario;
-import br.com.ifba.tiposdeusuario.service.IServiceTipoDeUsuario;
 import br.com.ifba.usuario.model.Usuario;
 import br.com.ifba.usuario.service.IServiceUsuario;
 
@@ -248,29 +248,29 @@ public class Controller {
     }
 
     // ---------------------------------------------------
-    // ------------- TIPO USUARIO -----------------------------
+    // ------------- PERFIL USUARIO -----------------------------
     // ---------------------------------------------------
 
     @Autowired
-    private IServiceTipoDeUsuario serviceTipoUsuario;
+    private IServicePerfilUsuario servicePerfilUsuario;
 
-    @RequestMapping(path = "deletarTipoDeUsuario", method = RequestMethod.GET) 
-    public boolean deletarTipoDeUsuario(Long id) {
-        TipoDeUsuario tusuario = new TipoDeUsuario(); 
-        tusuario.setId(id);
-        serviceTipoUsuario.deleteTipoDeUsuario(tusuario);
+    @RequestMapping(path = "deletarPerfilDeUsuario", method = RequestMethod.GET) 
+    public boolean deletarPerfilUsuario(Long id) {
+        PerfilUsuario pusuario = new PerfilUsuario(); 
+        pusuario.setId(id);
+        servicePerfilUsuario.deletePerfilUsuario(pusuario);
         return true;
     }
 
-    @RequestMapping(path = "/salvarTipoDeUsuario", method = RequestMethod.POST)
-      public TipoDeUsuario salvarTipoDeUsuario(@RequestBody String tipodeusuario) {
-        TipoDeUsuario tusuario = (TipoDeUsuario) gson.fromJson(tipodeusuario, TipoDeUsuario.class);
-        return serviceTipoUsuario.saveTipoDeUsuario(tusuario);
+    @RequestMapping(path = "/salvarPerfilUsuario", method = RequestMethod.POST)
+      public PerfilUsuario salvarPerfilUsuario(@RequestBody String perfilusuario) {
+        PerfilUsuario pusuario = (PerfilUsuario) gson.fromJson(perfilusuario, PerfilUsuario.class);
+        return servicePerfilUsuario.savePerfilUsuario(pusuario);
     }
 
-    @RequestMapping(path = "/tipodeusuario")
-    public List<TipoDeUsuario> salvarTipoDeUsuario() {
-        return (List<TipoDeUsuario>) serviceTipoUsuario.getAllTipoDeUsuario();
+    @RequestMapping(path = "/perfilusuario")
+    public List<PerfilUsuario> salvarPerfilUsuario() {
+        return (List<PerfilUsuario>) servicePerfilUsuario.getAllPerfilUsuario();
     }
     
     // ---------------------------------------------------

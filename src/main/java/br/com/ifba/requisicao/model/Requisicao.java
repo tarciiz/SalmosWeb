@@ -8,13 +8,16 @@ import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.item.model.Item;
 import br.com.ifba.pessoa.model.Pessoa;
 import br.com.ifba.setor.model.Setor;
+
 import lombok.Data;
-// import java.util.Collection;
-// import javax.persistence.CascadeType;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import java.util.List;
 
 /**
@@ -24,17 +27,19 @@ import java.util.List;
 @Entity
 @Table(name = "requisicao")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Requisicao extends PersistenceEntity {
     private String codigoSaida;
     private boolean status;
 
-    @OneToMany(mappedBy = "requisicoes")
+    @ManyToOne
+    @JoinColumn(name = "setor_id")
     private Setor setor;
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa requisitante;
 
     @ManyToMany
     private List<Item> itens;
-
-    @OneToMany(mappedBy = "requisicoes")
-    private Pessoa requisitante;
-
 }

@@ -5,9 +5,9 @@
 package br.com.ifba.item.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-//import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.ifba.empenho.model.Empenho;
@@ -20,6 +20,7 @@ import br.com.ifba.tipodeitem.model.TipoDeItem;
 import java.util.Date;
 import java.util.List;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -29,6 +30,7 @@ import lombok.Data;
 @Entity
 @Table(name = "item")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Item extends PersistenceEntity {
     private String codigoItem;
     private String nome;
@@ -38,12 +40,14 @@ public class Item extends PersistenceEntity {
     private Date dataValidade;
     private double valorItem;
     private boolean perecivel;
-    
-    @OneToMany(mappedBy = "itens")
+        
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
-    @OneToMany(mappedBy = "itens")
-    private TipoDeItem tipoItem;
+    @ManyToOne
+    @JoinColumn(name = "tipoDeItem_id")
+    private TipoDeItem tipoDeItem;
 
     @ManyToMany(mappedBy = "itens")
     private List<Empenho> empenhos;

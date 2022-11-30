@@ -8,9 +8,11 @@ import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.item.model.Item;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.util.List;
 
 /**
@@ -21,13 +23,13 @@ import java.util.List;
 @Entity
 @Table(name = "fornecedor")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Fornecedor extends PersistenceEntity {
     private String nome;
     private String email;
     private String cnpj;
     private String telefone;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "fornecedor")  
     private List<Item> itens;
-
 }

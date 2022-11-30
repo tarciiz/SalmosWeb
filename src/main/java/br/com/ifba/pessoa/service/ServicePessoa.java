@@ -97,10 +97,11 @@ public class ServicePessoa implements IServicePessoa {
         return pessoa.isPresent() ? pessoa.get() : null;
     }
 
+    /*
     @Override
     public Pessoa findByLoginOrEmailAndSenha(String login, String email, String senha) {
         Optional<Pessoa> pessoa = daoPessoa.findByLoginOrEmailAndSenha(login, email, senha);
         return pessoa.isPresent() ? pessoa.get() : null;
     }
-
+    */
 }

@@ -15,9 +15,10 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  *
@@ -27,12 +28,13 @@ import lombok.Data;
 @Entity
 @Table(name = "empenho")
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Empenho extends PersistenceEntity {    
     private Date validade;
     private String nota;
     private float valor;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "empenho")
     private List<Pedido> pedidos;
     
     @ManyToMany
