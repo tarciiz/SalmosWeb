@@ -28,8 +28,7 @@ import lombok.EqualsAndHashCode;
 public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
-    private String email;
-
+    
     @OneToOne(mappedBy = "usuario")
     private Pessoa pessoa;
 
