@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class TipoDeItem extends PersistenceEntity {
-    private String nome;
+    private String name;
     private String descricao;
 
     @OneToMany(mappedBy = "tipoDeItem")

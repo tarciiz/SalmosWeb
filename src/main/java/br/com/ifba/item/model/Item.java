@@ -33,7 +33,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class Item extends PersistenceEntity {
     private String codigoItem;
-    private String nome;
+    private String name;
     private String descricao;
     private int quantidade;
     private int quantidadeMinima;    

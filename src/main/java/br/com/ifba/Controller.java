@@ -295,16 +295,16 @@ public class Controller {
         return true;
     }
 
-    @RequestMapping(path = "/login")
-    public Usuario login(String login, String senha) {
-        Usuario user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, senha);
+    // @RequestMapping(path = "/login")
+    // public Usuario login(String login, String senha) {
+    //     Usuario user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, senha);
 
-        if (user == null) {
-            user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, StringUtil.toMD5(senha));
-        }
+    //     if (user == null) {
+    //         user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, StringUtil.toMD5(senha));
+    //     }
 
-        return user;
-    }
+    //     return user;
+    // }
 
     @RequestMapping(path = "/salvarUsuario", method = RequestMethod.POST)
     public Usuario salvarUsuario(@RequestBody String usuario) {

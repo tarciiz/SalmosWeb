@@ -25,7 +25,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Fornecedor extends PersistenceEntity {
-    private String nome;
+    private String name;
     private String email;
     private String cnpj;
     private String telefone;

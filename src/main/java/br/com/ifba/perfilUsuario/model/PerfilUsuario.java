@@ -9,7 +9,9 @@ import br.com.ifba.usuario.model.Usuario;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
@@ -23,11 +25,11 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "perfilusuario")
 @Data
-@EqualsAndHashCode(callSuper = false)
+
 public class PerfilUsuario extends PersistenceEntity {
-    private String nome;
+    private String name;
     private String descricao;
     
-    @OneToMany(mappedBy = "perfil")
+    @OneToMany(mappedBy ="perfilUsuario", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Usuario> usuarios;
 }

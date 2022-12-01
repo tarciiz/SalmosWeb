@@ -5,6 +5,7 @@
 package br.com.ifba.usuario.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -28,13 +29,11 @@ import lombok.EqualsAndHashCode;
 public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
-    private String email;
-
-    @OneToOne(mappedBy = "usuario")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "perfil_usuario_id", referencedColumnName = "id")
+    private PerfilUsuario perfilUsuario;
+    @OneToOne(fetch = FetchType.EAGER)
     private Pessoa pessoa;
 
-    @ManyToOne
-    @JoinColumn(name = "perfilUsuario_id")
-    private PerfilUsuario perfil;
 }
 

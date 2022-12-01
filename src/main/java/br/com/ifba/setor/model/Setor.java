@@ -6,7 +6,9 @@ package br.com.ifba.setor.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.requisicao.model.Requisicao;
+import ch.qos.logback.core.subst.Token.Type;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -28,10 +30,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class Setor extends PersistenceEntity {
     // Atributos
-    private String nome;
+    private String name;
     private String descricao;
 
-    @OneToMany(mappedBy = "setor")
-    private List<Requisicao> requisicoes;
+    // @OneToMany(cascade= CascadeType.ALL)
+    // private List<Requisicao> requisicoes;
 
 }

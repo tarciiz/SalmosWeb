@@ -97,10 +97,10 @@ public class ServiceUsuario implements IServiceUsuario {
         return user.isPresent() ? user.get() : null;
     }
 
-    @Override
-    public Usuario findByLoginOrEmailAndSenha(String login, String email, String senha) {
-        Optional<Usuario> user = daoUsuario.findByLoginOrEmailAndSenha(login, email, senha);
-        return user.isPresent() ? user.get() : null;
-    }
+    // @Override
+    // public Usuario findByLoginOrEmailAndSenha(String login, String email, String senha) {
+    //     Optional<Usuario> user = daoUsuario.findByLoginOrEmailAndSenha(login, senha);
+    //     return user.isPresent() ? user.get() : null;
+    // }
 
 }
