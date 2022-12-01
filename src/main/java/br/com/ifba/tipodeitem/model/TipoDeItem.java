@@ -1,6 +1,8 @@
 package br.com.ifba.tipodeitem.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
@@ -18,7 +20,8 @@ public class TipoDeItem extends PersistenceEntity {
     private String name;
     private String descricao;
 
-    @OneToMany(mappedBy = "tipoDeItem")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoDeItem")
+    //@JoinColumn(name = "tipodeitens_id")
     private List<Item> itens;
     
 }

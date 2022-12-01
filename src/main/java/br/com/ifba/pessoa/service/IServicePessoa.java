@@ -19,7 +19,7 @@ public interface IServicePessoa {
 
     public abstract Pessoa savePessoa(Pessoa pessoa);
 
-    public abstract void deletePessoa(Pessoa pessoa);
+    //public abstract void deletePessoa(Pessoa pessoa);
 
     public abstract List<Pessoa> getAllPessoas();
 

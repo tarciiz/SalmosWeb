@@ -33,7 +33,7 @@ public class Setor extends PersistenceEntity {
     private String name;
     private String descricao;
 
-    // @OneToMany(cascade= CascadeType.ALL)
-    // private List<Requisicao> requisicoes;
+    @OneToMany(cascade= CascadeType.ALL, mappedBy = "setor")
+    private List<Requisicao> requisicoes;
 
 }

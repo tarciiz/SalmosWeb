@@ -7,6 +7,7 @@ package br.com.ifba.fornecedor.model;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.item.model.Item;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -30,6 +31,6 @@ public class Fornecedor extends PersistenceEntity {
     private String cnpj;
     private String telefone;
 
-    @OneToMany(mappedBy = "fornecedor")  
+    @OneToMany(cascade= CascadeType.ALL, mappedBy = "fornecedor")  
     private List<Item> itens;
 }
