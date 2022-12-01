@@ -30,7 +30,7 @@ public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "perfil_usuario_id", referencedColumnName = "id")
+    @JoinColumn(name = "perfil_usuario_id", referencedColumnName = "ID")
     private PerfilUsuario perfilUsuario;
     @OneToOne(fetch = FetchType.EAGER)
     private Pessoa pessoa;
