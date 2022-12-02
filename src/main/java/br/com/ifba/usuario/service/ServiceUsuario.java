@@ -47,8 +47,9 @@ public class ServiceUsuario implements IServiceUsuario {
         }
 
         // O usuario já existe e está atualizando o usuário
-        Usuario oldUser = this.findById(usuario.getId());
-        if (oldUser != null) {
+        Long id = usuario.getId();
+        if (id != null) {
+            Usuario oldUser = this.findById(usuario.getId());
             System.out.println("O usuario está sendo atualizado " + usuario.getId());
             // Busca o usuário salvo no banco para atualizar a senha somente se mudar
 
@@ -97,10 +98,10 @@ public class ServiceUsuario implements IServiceUsuario {
         return user.isPresent() ? user.get() : null;
     }
 
-    // @Override
-    // public Usuario findByLoginOrEmailAndSenha(String login, String email, String senha) {
-    //     Optional<Usuario> user = daoUsuario.findByLoginOrEmailAndSenha(login, senha);
-    //     return user.isPresent() ? user.get() : null;
-    // }
+    @Override
+    public Usuario findByLoginAndSenha(String login, String senha) {
+        Optional<Usuario> user = daoUsuario.findByLoginAndSenha(login, senha);
+        return user.isPresent() ? user.get() : null;
+    }
 
 }

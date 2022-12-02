@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
 /**
  *
  * @author matheus
-*/
+ */
 
 @Entity
 @Table(name = "pessoa")
@@ -37,9 +37,4 @@ public class Pessoa extends PersistenceEntity {
 
     @OneToMany(mappedBy = "requisitante")
     private List<Requisicao> requisicoes;
-
-    @OneToOne
-    private Usuario usuario;
 }
-
-

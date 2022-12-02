@@ -49,11 +49,11 @@ public class Controller {
     }
 
     // ------------------------------------------------------------------------------
-    // -------------------------------   Empenho   ----------------------------------
+    // ------------------------------- Empenho ----------------------------------
     // ------------------------------------------------------------------------------
 
     @Autowired
-    private IServiceEmpenho serviceEmpenho; 
+    private IServiceEmpenho serviceEmpenho;
 
     @RequestMapping(path = "deletarEmpenho", method = RequestMethod.GET)
     public boolean deletarEmpenho(Long id) {
@@ -115,7 +115,7 @@ public class Controller {
         return serviceItem.saveItem(itemm);
     }
 
-    @RequestMapping(path = "deletarItem", method = RequestMethod.GET) 
+    @RequestMapping(path = "deletarItem", method = RequestMethod.GET)
     public boolean deletarItem(Long id) {
         Item item = new Item();
         item.setId(id);
@@ -123,11 +123,11 @@ public class Controller {
         return true;
     }
 
-     @RequestMapping(path = "/Item")
+    @RequestMapping(path = "/Item")
     public List<Item> salvarItem() {
         return (List<Item>) serviceItem.getAllItens();
     }
-    
+
     @RequestMapping(path = "/salvarItem", method = RequestMethod.POST)
     public Item salvarItem(@RequestBody String itemm) {
         Item item = (Item) gson.fromJson(itemm, Item.class);
@@ -136,11 +136,11 @@ public class Controller {
     }
 
     // ------------------------------------------------------------------------------
-    // -------------------------------   Pedido   ----------------------------------
+    // ------------------------------- Pedido ----------------------------------
     // ------------------------------------------------------------------------------
 
     @Autowired
-    private IServicePedido servicePedido; 
+    private IServicePedido servicePedido;
 
     @RequestMapping(path = "deletarPedido", method = RequestMethod.GET)
     public boolean deletarPedido(Long id) {
@@ -160,8 +160,7 @@ public class Controller {
         Pedido pedido = (Pedido) gson.fromJson(empenho1, Pedido.class);
         return servicePedido.savePedido(pedido);
     }
-    
-    
+
     // ---------------------------------------------------
     // ------------- Requisição -----------------------------
     // ---------------------------------------------------
@@ -169,7 +168,7 @@ public class Controller {
     @Autowired
     private IServiceRequisicao serviceRequisicao;
 
-    @RequestMapping(path = "/deletarRequisicao", method = RequestMethod.GET) 
+    @RequestMapping(path = "/deletarRequisicao", method = RequestMethod.GET)
     public boolean deletarRequisicao(Long id) {
         Requisicao requisicaoo = new Requisicao();
         requisicaoo.setId(id);
@@ -187,13 +186,13 @@ public class Controller {
         Requisicao requisicaoo = (Requisicao) gson.fromJson(requisicoes, Requisicao.class);
         return serviceRequisicao.saveRequisicao(requisicaoo);
     }
-    
+
     // ---------------------------------------------------
     // ------------- Setor -----------------------------
     // ---------------------------------------------------
 
     @Autowired
-    private IServiceSetor serviceSetor; 
+    private IServiceSetor serviceSetor;
 
     @RequestMapping(path = "deletarSetor", method = RequestMethod.GET)
     public boolean deletarSetor(Long id) {
@@ -236,8 +235,9 @@ public class Controller {
         serviceTipoItem.deletetipoDeItem(tipo);
         return true;
     }
+
     @RequestMapping(path = "/tipoDeItem")
-        public List<TipoDeItem> gettTipoDeItem() {
+    public List<TipoDeItem> gettTipoDeItem() {
         return serviceTipoItem.getAlltipoDeItem();
     }
 
@@ -254,16 +254,16 @@ public class Controller {
     @Autowired
     private IServicePerfilUsuario servicePerfilUsuario;
 
-    @RequestMapping(path = "deletarPerfilDeUsuario", method = RequestMethod.GET) 
+    @RequestMapping(path = "deletarPerfilDeUsuario", method = RequestMethod.GET)
     public boolean deletarPerfilUsuario(Long id) {
-        PerfilUsuario pusuario = new PerfilUsuario(); 
+        PerfilUsuario pusuario = new PerfilUsuario();
         pusuario.setId(id);
         servicePerfilUsuario.deletePerfilUsuario(pusuario);
         return true;
     }
 
     @RequestMapping(path = "/salvarPerfilUsuario", method = RequestMethod.POST)
-      public PerfilUsuario salvarPerfilUsuario(@RequestBody String perfilusuario) {
+    public PerfilUsuario salvarPerfilUsuario(@RequestBody String perfilusuario) {
         PerfilUsuario pusuario = (PerfilUsuario) gson.fromJson(perfilusuario, PerfilUsuario.class);
         return servicePerfilUsuario.savePerfilUsuario(pusuario);
     }
@@ -272,7 +272,7 @@ public class Controller {
     public List<PerfilUsuario> salvarPerfilUsuario() {
         return (List<PerfilUsuario>) servicePerfilUsuario.getAllPerfilUsuario();
     }
-    
+
     // ---------------------------------------------------
     // ------------- USUARIO -----------------------------
     // ---------------------------------------------------
@@ -295,16 +295,16 @@ public class Controller {
         return true;
     }
 
-    // @RequestMapping(path = "/login")
-    // public Usuario login(String login, String senha) {
-    //     Usuario user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, senha);
+    @RequestMapping(path = "/login")
+    public Usuario login(String login, String senha) {
+        Usuario user = serviceUsuario.findByLoginAndSenha(login, senha);
 
-    //     if (user == null) {
-    //         user = serviceUsuario.findByLoginOrEmailAndSenha(login, login, StringUtil.toMD5(senha));
-    //     }
+        if (user == null) {
+            user = serviceUsuario.findByLoginAndSenha(login, StringUtil.toMD5(senha));
+        }
 
-    //     return user;
-    // }
+        return user;
+    }
 
     @RequestMapping(path = "/salvarUsuario", method = RequestMethod.POST)
     public Usuario salvarUsuario(@RequestBody String usuario) {
@@ -322,4 +322,4 @@ public class Controller {
         System.out.println("Id " + id);
         return (Usuario) this.serviceUsuario.findById(id);
     }
-    }
+}
