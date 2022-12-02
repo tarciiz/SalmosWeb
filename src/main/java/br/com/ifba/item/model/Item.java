@@ -10,6 +10,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import br.com.ifba.empenho.model.Empenho;
 import br.com.ifba.fornecedor.model.Fornecedor;
 import br.com.ifba.infrastructure.model.PersistenceEntity;
@@ -39,22 +41,27 @@ public class Item extends PersistenceEntity {
     private int quantidadeMinima;    
     private Date dataValidade;
     private double valorItem;
-    private boolean perecivel;
-        
+    private String perecivel;
+      
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "tipoDeItem_id")
     private TipoDeItem tipoDeItem;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "itens")
     private List<Empenho> empenhos;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "itens")
     private List<Requisicao> requisicoes;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "itens")
     private List<Pedido> pedidos;
 
