@@ -3,6 +3,7 @@ package br.com.ifba;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,6 +75,37 @@ public class Controller {
     public Empenho salvarEmpenho(@RequestBody String empenho1) {
         Empenho empenho = (Empenho) gson.fromJson(empenho1, Empenho.class);
         return serviceEmpenho.saveEmpenho(empenho);
+    }
+
+    // Rodando de 5 em 5 minutos
+    @Scheduled(fixedDelay = 60000)
+    public void sendNotificationsWhenDue() throws InterruptedException {
+        System.out.println("Send notification Empenho's due");
+
+        List<Empenho> empenhos = serviceEmpenho
+                .validadeBefore(new java.util.Date());
+
+        if (empenhos == null)
+            return;
+
+        for (Empenho empenho : empenhos) {
+            Notification notification = serviceNotification.findByWhatIdAndWhatObjectName(empenho.getId(),
+                    empenho.getClass().getSimpleName());
+
+            if (notification != null)
+                continue;
+
+            notification = new Notification();
+
+            notification.setTitle("Um empenho está vencido");
+            notification.setBody("O empenho com nota " + empenho.getNota() + " e valor R$ "
+                    + String.valueOf(empenho.getValor()).replace('.', ',')
+                    + " está vencido, acesse e siga os passos necessários.");
+            notification.setWhatId(empenho.getId());
+            notification.setWhatObjectName(empenho.getClass().getSimpleName());
+
+            serviceNotification.saveNotification(notification);
+        }
     }
 
     // ---------------------------------------------------

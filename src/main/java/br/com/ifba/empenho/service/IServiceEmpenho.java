@@ -4,6 +4,7 @@
  */
 package br.com.ifba.empenho.service;
 
+import java.util.Date;
 import java.util.List;
 
 import br.com.ifba.empenho.model.Empenho;
@@ -20,5 +21,7 @@ public interface IServiceEmpenho {
     public abstract void deleteEmpenho(Empenho empenho);
 
     public abstract List<Empenho> getAllEmpenho();
+
+    public abstract List<Empenho> validadeBefore(Date validade);
 
 }

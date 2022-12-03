@@ -25,4 +25,6 @@ public interface IServiceNotification {
 
     public abstract Notification findById(Long id);
 
+    public abstract Notification findByWhatIdAndWhatObjectName(Long whatId, String whatObjectName);
+
 }

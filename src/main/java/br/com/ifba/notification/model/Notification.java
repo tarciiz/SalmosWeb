@@ -33,6 +33,8 @@ public class Notification extends PersistenceEntity {
     // List<Usuario> recivers;
 
     String urlFor;
+    Long whatId;
+    String whatObjectName;
 
     boolean readed = false;
 

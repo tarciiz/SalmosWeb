@@ -83,4 +83,9 @@ public class ServiceNotification implements IServiceNotification {
         Optional<Notification> not = daoNotification.findById(id);
         return not.isPresent() ? not.get() : null;
     }
+
+    @Override
+    public Notification findByWhatIdAndWhatObjectName(Long whatId, String whatObjectName) {
+        return daoNotification.findByWhatIdAndWhatObjectName(whatId, whatObjectName);
+    }
 }
