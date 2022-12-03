@@ -15,5 +15,4 @@ import br.com.ifba.requisicao.model.Requisicao;
  * @author Vitor
  */
 public interface IDaoRequisicao extends JpaRepository<Requisicao, Long> {
-     public List<Requisicao> findByNome(String name);
 }

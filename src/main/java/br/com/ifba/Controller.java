@@ -19,6 +19,8 @@ import br.com.ifba.fornecedor.service.IServiceFornecedor;
 import br.com.ifba.infrastructure.support.StringUtil;
 import br.com.ifba.item.model.Item;
 import br.com.ifba.item.service.IServiceItem;
+import br.com.ifba.notification.model.Notification;
+import br.com.ifba.notification.service.IServiceNotification;
 import br.com.ifba.pedido.model.Pedido;
 import br.com.ifba.pedido.service.IServicePedido;
 import br.com.ifba.perfilUsuario.model.PerfilUsuario;
@@ -133,6 +135,40 @@ public class Controller {
         Item item = (Item) gson.fromJson(itemm, Item.class);
         System.out.println(item.toString());
         return serviceItem.saveItem(item);
+    }
+
+    // ---------------------------------------------------
+    // ------------- NOTIFICAÇÃO -------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServiceNotification serviceNotification;
+
+    @RequestMapping(path = "notifications")
+    public List<Notification> getNotifications() {
+        return serviceNotification.getAllNotification();
+    }
+
+    @RequestMapping(path = "notificationsUnread")
+    public List<Notification> getNotificationsUnread() {
+        return serviceNotification.findByReaded(false);
+    }
+
+    @RequestMapping(path = "setReadNotification")
+    public Notification setReadNotification(Long id) {
+        Notification not = serviceNotification.findById(id);
+        if (not == null)
+            return null;
+        not.setReaded(true);
+        return serviceNotification.saveNotification(not);
+    }
+
+    @RequestMapping(path = "saveNotification")
+    public Notification saveNotification() {
+        Notification not = new Notification();
+        not.setTitle("Notificaçõ teste");
+        not.setBody("Olá, essa é uma notificação teste");
+        return serviceNotification.saveNotification(not);
     }
 
     // ------------------------------------------------------------------------------

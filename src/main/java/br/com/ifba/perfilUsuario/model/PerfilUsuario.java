@@ -30,7 +30,7 @@ import lombok.EqualsAndHashCode;
 @Data
 
 public class PerfilUsuario extends PersistenceEntity {
-    private String name;
+    private String nome;
     private String descricao;
 
     @JsonManagedReference

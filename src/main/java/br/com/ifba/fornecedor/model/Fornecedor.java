@@ -26,11 +26,11 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class Fornecedor extends PersistenceEntity {
-    private String name;
+    private String nome;
     private String email;
     private String cnpj;
     private String telefone;
 
-    @OneToMany(cascade= CascadeType.ALL, mappedBy = "fornecedor")  
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "fornecedor")
     private List<Item> itens;
 }

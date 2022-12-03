@@ -23,8 +23,6 @@ public interface IServiceUsuario {
 
     public abstract List<Usuario> getAllUsuarios();
 
-    public List<Usuario> findByNome(String name);
-
     public Usuario findById(Long id);
 
     public Usuario findByLoginAndSenha(String login, String senha);

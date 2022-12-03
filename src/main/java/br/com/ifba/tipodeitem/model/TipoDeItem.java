@@ -17,11 +17,11 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class TipoDeItem extends PersistenceEntity {
-    private String name;
+    private String nome;
     private String descricao;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoDeItem")
-    //@JoinColumn(name = "tipodeitens_id")
+    // @JoinColumn(name = "tipodeitens_id")
     private List<Item> itens;
-    
+
 }

@@ -98,7 +98,7 @@ public class EmailUtil {
         messageText = contentBuilder.toString();
 
         messageText = messageText.replace("**helloMessage**", "Olá");
-        messageText = messageText.replace("**name**", user.getNome());
+        messageText = messageText.replace("**name**", user.getPessoa().getNome());
 
         messageText = messageText.replace("**codeInfo**", "Seu código SalmosRecover é:");
         messageText = messageText.replace("**infoMessage**",

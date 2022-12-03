@@ -82,17 +82,6 @@ public class ServiceUsuario implements IServiceUsuario {
     }
 
     @Override
-    public List<Usuario> findByNome(String name) {
-        if (name == null) {
-            throw new BusinessException("Nome null");
-        } else if (name.isEmpty()) {
-            throw new BusinessException("Nome vazio");
-        } else {
-            return daoUsuario.findByNome(name);
-        }
-    }
-
-    @Override
     public Usuario findById(Long id) {
         Optional<Usuario> user = daoUsuario.findById(id);
         return user.isPresent() ? user.get() : null;

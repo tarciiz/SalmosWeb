@@ -11,8 +11,6 @@ import br.com.ifba.usuario.model.Usuario;
 @Repository
 public interface IDaoUsuario extends JpaRepository<Usuario, Long> {
 
-    public abstract List<Usuario> findByNome(String name);
-
     public abstract Optional<Usuario> findById(Long id);
 
     public abstract Optional<Usuario> findByLoginAndSenha(String login, String senha);

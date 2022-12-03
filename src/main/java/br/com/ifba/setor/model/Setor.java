@@ -17,7 +17,6 @@ import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
-
 /**
  *
  * @author Everton.
@@ -30,10 +29,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class Setor extends PersistenceEntity {
     // Atributos
-    private String name;
+    private String nome;
     private String descricao;
 
-    @OneToMany(cascade= CascadeType.ALL, mappedBy = "setor")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "setor")
     private List<Requisicao> requisicoes;
 
 }
