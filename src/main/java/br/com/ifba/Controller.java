@@ -94,13 +94,12 @@ public class Controller {
             if (notification != null)
                 continue;
 
+            String title = "Um empenho está vencido";
             String body = "O empenho com nota " + empenho.getNota() + " e valor R$ "
                     + String.valueOf(empenho.getValor()).replace('.', ',')
                     + " está vencido, acesse e siga os passos necessários.";
-            notification = Notification.createNotification("Um empenho está vencido", body, empenho);
 
-            System.out.println("Notification -> " + notification.toString());
-
+            notification = Notification.createNotification(title, body, empenho);
             serviceNotification.saveNotification(notification);
         }
     }
