@@ -13,10 +13,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import java.util.List;
 
@@ -31,14 +34,19 @@ import java.util.List;
 public class Requisicao extends PersistenceEntity {
     private String codigoSaida;
     private boolean status;
+    private int quantidadeItensReq;
 
-    @ManyToOne
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "setor_id")
     private Setor setor;
 
-    @ManyToOne
-    @JoinColumn(name = "pessoa_id")
-    private Pessoa requisitante;
+    // @JsonBackReference
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "pessoa_id")
+    // private Pessoa requisitante;
+
+    private String requisitante;
 
     @ManyToMany
     private List<Item> itens;
