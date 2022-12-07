@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
 
 /**
@@ -37,9 +39,11 @@ public class Empenho extends PersistenceEntity {
     private String nota;
     private float valor;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "empenho", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Pedido> pedidos;
 
+    @JsonBackReference
     @ManyToMany
     private List<Item> itens;
 
