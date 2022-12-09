@@ -44,38 +44,16 @@ public class ServicePessoa implements IServicePessoa {
     public Pessoa savePessoa(Pessoa pessoa) {
         return daoPessoa.save(pessoa);
     }
-    //     if (pessoa == null) {
-    //         throw new BusinessException(Pessoa_NULL);
-    //     }
 
-    //     // O Pessoa já existe e está atualizando o usuário
-    //     Pessoa oldPessoa = this.findById(pessoa.getId());
-    //     if (oldPessoa != null) {
-    //         System.out.println("O Pessoa está sendo atualizado " + pessoa.getId());
-    //         // Busca o usuário salvo no banco para atualizar a senha somente se mudar
-
-    //         // Verifica se a senha foi atualizada
-    //         if (pessoa.getNome() != StringUtil.toMD5(pessoa.getNome())) {
-    //             pessoa.setNome(StringUtil.toMD5(pessoa.getNome()));
-    //         }
-    //     } else {
-    //         // O Pessoa está sendo inserido
-    //         System.out.println("O Pessoa está sendo inserido");
-    //         pessoa.setNome(StringUtil.toMD5(pessoa.getNome()));
-    //     }
-
-    //     return daoPessoa.save(pessoa);
-    // }
-
-    // @Override
-    // public void deletePessoa(Pessoa pessoa) {
-    //     if (pessoa == null) {
-    //         throw new BusinessException(Pessoa_NULL);
-    //     } else {
-    //         this.daoPessoa.delete(pessoa);
-    //         return;
-    //     }
-    // }
+    @Override
+    public void delete(Pessoa pessoa) {
+        if (pessoa == null) {
+            throw new BusinessException(Pessoa_NULL);
+        } else {
+            this.daoPessoa.delete(pessoa);
+            return;
+        }
+    }
 
     @Override
     public List<Pessoa> getAllPessoas() {
@@ -100,10 +78,12 @@ public class ServicePessoa implements IServicePessoa {
     }
 
     /*
-    @Override
-    public Pessoa findByLoginOrEmailAndSenha(String login, String email, String senha) {
-        Optional<Pessoa> pessoa = daoPessoa.findByLoginOrEmailAndSenha(login, email, senha);
-        return pessoa.isPresent() ? pessoa.get() : null;
-    }
-    */
+     * @Override
+     * public Pessoa findByLoginOrEmailAndSenha(String login, String email, String
+     * senha) {
+     * Optional<Pessoa> pessoa = daoPessoa.findByLoginOrEmailAndSenha(login, email,
+     * senha);
+     * return pessoa.isPresent() ? pessoa.get() : null;
+     * }
+     */
 }

@@ -26,6 +26,8 @@ import br.com.ifba.pedido.model.Pedido;
 import br.com.ifba.pedido.service.IServicePedido;
 import br.com.ifba.perfilUsuario.model.PerfilUsuario;
 import br.com.ifba.perfilUsuario.service.IServicePerfilUsuario;
+import br.com.ifba.pessoa.model.Pessoa;
+import br.com.ifba.pessoa.service.IServicePessoa;
 import br.com.ifba.requisicao.model.Requisicao;
 import br.com.ifba.requisicao.service.IServiceRequisicao;
 import br.com.ifba.setor.model.Setor;
@@ -128,6 +130,31 @@ public class Controller {
     public Fornecedor salvarFornecedor(@RequestBody String fornecedor) {
         Fornecedor forn = (Fornecedor) gson.fromJson(fornecedor, Fornecedor.class);
         return serviceFornecedor.saveFornecedor(forn);
+    }
+    // ---------------------------------------------------
+    // ------------- Pessoa -----------------------------
+    // ---------------------------------------------------
+
+    @Autowired
+    private IServicePessoa servicePessoa;
+
+    @RequestMapping(path = "deletarPessoa", method = RequestMethod.GET)
+    public boolean deletarPessoa(Long id) {
+        Pessoa pessoa = new Pessoa();
+        pessoa.setId(id);
+        servicePessoa.delete(pessoa);
+        return true;
+    }
+
+    @RequestMapping(path = "/pessoas")
+    public List<Pessoa> getPessoas() {
+        return (List<Pessoa>) servicePessoa.getAllPessoas();
+    }
+
+    @RequestMapping(path = "/salvarPessoa", method = RequestMethod.POST)
+    public Pessoa salvarPessoa(@RequestBody String pessoa) {
+        Pessoa pess = (Pessoa) gson.fromJson(pessoa, Pessoa.class);
+        return servicePessoa.savePessoa(pess);
     }
 
     // ---------------------------------------------------
