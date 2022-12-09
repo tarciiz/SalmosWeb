@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
@@ -33,9 +34,9 @@ public class Usuario extends PersistenceEntity {
     private String login;
     private String senha;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "perfil_usuario_id", referencedColumnName = "ID")
+    @JsonIgnoreProperties("usuarios")
     private PerfilUsuario perfilUsuario;
 
     @OneToOne(fetch = FetchType.LAZY)

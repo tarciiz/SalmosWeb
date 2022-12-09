@@ -15,7 +15,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -33,7 +33,6 @@ public class PerfilUsuario extends PersistenceEntity {
     private String nome;
     private String descricao;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "perfilUsuario", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     private List<Usuario> usuarios;
 }
