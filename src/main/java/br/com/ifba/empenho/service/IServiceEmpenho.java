@@ -24,4 +24,6 @@ public interface IServiceEmpenho {
 
     public abstract List<Empenho> validadeBefore(Date validade);
 
+    public abstract List<Empenho> validadeAfter(Date validade);
+
 }

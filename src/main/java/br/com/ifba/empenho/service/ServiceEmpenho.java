@@ -81,4 +81,9 @@ public class ServiceEmpenho implements IServiceEmpenho {
     public List<Empenho> validadeBefore(Date validade) {
         return daoEmpenho.validadeBefore(validade);
     }
+
+    @Override
+    public List<Empenho> validadeAfter(Date validade) {
+        return daoEmpenho.validadeAfter(validade);
+    }
 }

@@ -73,6 +73,11 @@ public class Controller {
         return (List<Empenho>) serviceEmpenho.getAllEmpenho();
     }
 
+    @RequestMapping(path = "/empenhosValidos")
+    public List<Empenho> listarEmpenhosValidos() {
+        return (List<Empenho>) serviceEmpenho.validadeAfter(new java.util.Date());
+    }
+
     @RequestMapping(path = "/salvarEmpenho", method = RequestMethod.POST)
     public Empenho salvarEmpenho(@RequestBody String empenho1) {
         Empenho empenho = (Empenho) gson.fromJson(empenho1, Empenho.class);
