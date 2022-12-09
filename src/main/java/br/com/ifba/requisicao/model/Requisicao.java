@@ -20,6 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
@@ -36,8 +37,8 @@ public class Requisicao extends PersistenceEntity {
     private boolean status;
     private int quantidadeItensReq;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("requisicoes")
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "setor_id")
     private Setor setor;
 
@@ -48,6 +49,8 @@ public class Requisicao extends PersistenceEntity {
 
     private String requisitante;
 
-    @ManyToMany
+    @JsonIgnoreProperties("requisicoes")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "item_id")
     private List<Item> itens;
 }
