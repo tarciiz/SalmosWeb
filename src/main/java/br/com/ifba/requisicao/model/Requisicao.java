@@ -17,6 +17,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -50,7 +51,8 @@ public class Requisicao extends PersistenceEntity {
     private String requisitante;
 
     @JsonIgnoreProperties("requisicoes")
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "item_id")
-    private List<Item> itens;
+    // @ManyToMany(fetch = FetchType.EAGER)
+    // @JoinColumn(name = "item_id")
+    @OneToOne
+    private Item itens;
 }
