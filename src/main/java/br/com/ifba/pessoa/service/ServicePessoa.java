@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifba.infrastructure.exception.BusinessException;
-import br.com.ifba.infrastructure.support.StringUtil;
 import br.com.ifba.pessoa.dao.IDaoPessoa;
 import br.com.ifba.pessoa.model.Pessoa;
 

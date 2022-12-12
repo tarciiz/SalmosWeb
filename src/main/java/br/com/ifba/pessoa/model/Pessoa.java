@@ -9,13 +9,11 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.requisicao.model.Requisicao;
-import br.com.ifba.usuario.model.Usuario;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

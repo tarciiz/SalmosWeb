@@ -14,8 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-
 import lombok.Data;
 
 /**

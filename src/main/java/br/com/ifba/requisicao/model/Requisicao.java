@@ -6,7 +6,6 @@ package br.com.ifba.requisicao.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.item.model.Item;
-import br.com.ifba.pessoa.model.Pessoa;
 import br.com.ifba.setor.model.Setor;
 
 import lombok.Data;
@@ -15,15 +14,11 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.util.List;
 
 /**
  *

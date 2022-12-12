@@ -4,8 +4,6 @@
  */
 package br.com.ifba.requisicao.dao;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.ifba.requisicao.model.Requisicao;

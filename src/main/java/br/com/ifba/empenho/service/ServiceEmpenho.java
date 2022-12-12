@@ -5,8 +5,6 @@
 package br.com.ifba.empenho.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
-
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 import br.com.ifba.empenho.dao.IDaoEmpenho;
 import br.com.ifba.empenho.model.Empenho;
 import br.com.ifba.infrastructure.exception.BusinessException;
-import br.com.ifba.notification.service.ServiceNotification;
 
 /**
  *

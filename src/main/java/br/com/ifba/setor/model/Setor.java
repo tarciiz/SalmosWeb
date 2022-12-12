@@ -6,8 +6,6 @@ package br.com.ifba.setor.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import br.com.ifba.requisicao.model.Requisicao;
-import ch.qos.logback.core.subst.Token.Type;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
