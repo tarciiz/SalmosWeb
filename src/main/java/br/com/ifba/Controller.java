@@ -93,7 +93,7 @@ public class Controller {
         if (empenhos == null)
             return;
 
-        System.out.println("Send notification Empenho's due");
+        // System.out.println("Send notification Empenho's due");
         for (Empenho empenho : empenhos) {
             Notification notification = serviceNotification.findByWhatIdAndWhatObjectName(empenho.getId(),
                     empenho.getClass().getSimpleName());

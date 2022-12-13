@@ -41,7 +41,7 @@ public class Item extends PersistenceEntity {
     private int quantidadeMinima;
     private Date dataValidade;
     private double valorItem;
-    private String perecivel;
+    private boolean perecivel;
 
     @ManyToOne
     @JoinColumn(name = "fornecedor_id")
