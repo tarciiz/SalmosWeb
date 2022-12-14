@@ -309,6 +309,13 @@ public class Controller {
         return serviceSetor.saveSetor(setor);
     }
 
+
+
+    @RequestMapping(path = "/setorItem")
+    public List<Item> listarItensPorSetor(){
+        return (List<Item>) serviceSetor.getSetorItens(null);
+    }
+
     // ---------------------------------------------------
     // ------------- TIPO DE ITEM -----------------------------
     // ---------------------------------------------------

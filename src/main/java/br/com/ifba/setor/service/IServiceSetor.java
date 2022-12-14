@@ -6,6 +6,7 @@ package br.com.ifba.setor.service;
 
 import java.util.List;
 
+import br.com.ifba.item.model.Item;
 import br.com.ifba.setor.model.Setor;
 
 /**
@@ -23,4 +24,6 @@ public interface IServiceSetor {
     public abstract List<Setor> getAllSetor();
 
     public List<Setor> findByNome(String name);
+
+    public List <Item> getSetorItens(List <Item> listaItem);
 }
