@@ -309,17 +309,13 @@ public class Controller {
         return serviceSetor.saveSetor(setor);
     }
 
-
-
-    @RequestMapping(path = "/setorItem")
-    public List<Item> listarItensPorSetor(){
-        return (List<Item>) serviceSetor.getSetorItens(null);
+    @RequestMapping(path = "/setorItem/{id}")
+    public List<Item> listarItensPorSetor(@PathVariable Long id) {
+        return (List<Item>) serviceSetor.getSetorItens(id, serviceRequisicao.getAllRequisicao());
     }
 
     // ---------------------------------------------------
-    // ------------- TIPO DE ITEM -----------------------------
-    // ---------------------------------------------------
-
+ 
     @Autowired
     private IServiceTipoItem serviceTipoItem;
 

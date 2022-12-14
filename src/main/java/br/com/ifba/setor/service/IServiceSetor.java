@@ -7,6 +7,7 @@ package br.com.ifba.setor.service;
 import java.util.List;
 
 import br.com.ifba.item.model.Item;
+import br.com.ifba.requisicao.model.Requisicao;
 import br.com.ifba.setor.model.Setor;
 
 /**
@@ -25,5 +26,6 @@ public interface IServiceSetor {
 
     public List<Setor> findByNome(String name);
 
-    public List <Item> getSetorItens(List <Item> listaItem);
+    public abstract List<Item> getSetorItens(Long setorId, List<Requisicao> listReq);
+
 }

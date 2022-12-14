@@ -89,19 +89,15 @@ public class ServiceSetor implements IServiceSetor {
     }
 
     @Override
-    public List <Item> getSetorItens(List <Item> listaItem){
-        List<Setor> setorLista = new ArrayList<Setor>();
-        listaItem = new ArrayList<Item>();
-        Requisicao requisicao = new Requisicao();
-        for (Setor setor : setorLista) {
-            if(setor.getId().equals(requisicao.getSetor())){
-                listaItem.add(requisicao.getItens());
+    public List<Item> getSetorItens(Long setorId, List<Requisicao> listReq) {
+        List<Item> itensList = new ArrayList<Item>();
+
+        for (Requisicao req : listReq) {
+            if (setorId.equals(req.getSetor().getId())) {
+                itensList.add(req.getItens());
             }
-            
+
         }
-        
-        return listaItem;
-    
+        return itensList;
     }
-        
 }
