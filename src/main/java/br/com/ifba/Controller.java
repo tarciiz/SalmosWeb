@@ -93,7 +93,7 @@ public class Controller {
         if (empenhos == null)
             return;
 
-        System.out.println("Send notification Empenho's due");
+        // System.out.println("Send notification Empenho's due");
         for (Empenho empenho : empenhos) {
             Notification notification = serviceNotification.findByWhatIdAndWhatObjectName(empenho.getId(),
                     empenho.getClass().getSimpleName());
@@ -309,10 +309,13 @@ public class Controller {
         return serviceSetor.saveSetor(setor);
     }
 
-    // ---------------------------------------------------
-    // ------------- TIPO DE ITEM -----------------------------
-    // ---------------------------------------------------
+    @RequestMapping(path = "/setorItem/{id}")
+    public List<Item> listarItensPorSetor(@PathVariable Long id) {
+        return (List<Item>) serviceSetor.getSetorItens(id, serviceRequisicao.getAllRequisicao());
+    }
 
+    // ---------------------------------------------------
+ 
     @Autowired
     private IServiceTipoItem serviceTipoItem;
 

@@ -4,14 +4,19 @@
  */
 package br.com.ifba.setor.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ifba.infrastructure.exception.BusinessException;
+import br.com.ifba.item.model.Item;
+import br.com.ifba.requisicao.model.Requisicao;
 import br.com.ifba.setor.dao.IDaoSetor;
 import br.com.ifba.setor.model.Setor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 
 /**
  *
@@ -83,4 +88,16 @@ public class ServiceSetor implements IServiceSetor {
         }
     }
 
+    @Override
+    public List<Item> getSetorItens(Long setorId, List<Requisicao> listReq) {
+        List<Item> itensList = new ArrayList<Item>();
+
+        for (Requisicao req : listReq) {
+            if (setorId.equals(req.getSetor().getId())) {
+                itensList.add(req.getItens());
+            }
+
+        }
+        return itensList;
+    }
 }
