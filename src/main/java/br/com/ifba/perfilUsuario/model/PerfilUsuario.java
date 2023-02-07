@@ -30,6 +30,6 @@ public class PerfilUsuario extends PersistenceEntity {
     private String nome;
     private String descricao;
 
-    @OneToMany(mappedBy = "perfilUsuario", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    private List<Usuario> usuarios;
+    // @OneToMany(mappedBy = "perfilUsuario", fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    // private List<Usuario> usuarios;
 }

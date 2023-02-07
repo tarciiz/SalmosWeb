@@ -36,7 +36,7 @@ public class Usuario extends PersistenceEntity {
     @JsonIgnoreProperties("usuarios")
     private PerfilUsuario perfilUsuario;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Pessoa pessoa;
+    // @OneToOne(fetch = FetchType.LAZY)
+    // private Pessoa pessoa;
 
 }
